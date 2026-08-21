@@ -3,32 +3,58 @@
 .env.*
 !.env.example
 
+
 # Python
 .venv/
+venv/
+env/
 __pycache__/
 *.py[cod]
 *.pyo
+
 
 # Testing
 .pytest_cache/
 .coverage
 htmlcov/
 
+
 # IDE
 .vscode/
 .idea/
 
+
 # OS
 .DS_Store
 Thumbs.db
+
 
 # Build artifacts
 build/
 dist/
 *.egg-info/
 
+
 # Jupyter
 .ipynb_checkpoints/
 
+
 # Logs
 *.log
+
+
+# Raw source data
+data/raw/
+
+
+# Hugging Face / ML caches
+.cache/
+huggingface/
+.huggingface/
+
+
+
+# Local databases
+*.db
+*.sqlite
+*.sqlite3
