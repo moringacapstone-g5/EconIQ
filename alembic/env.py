@@ -12,7 +12,7 @@ from app.models.country import Country
 from app.models.economic_indicator import EconomicIndicator
 from app.models.data_source import DataSource
 from app.models.indicator_observation import IndicatorObservation
-
+from app.models.document_chunk import DocumentChunk
 
 config = context.config
 
