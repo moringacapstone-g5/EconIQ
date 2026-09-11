@@ -40,7 +40,7 @@ def create_collection(
 
     if COLLECTION_NAME in existing_names:
         print(
-            f"✓ Qdrant collection already exists: "
+            f" Qdrant collection already exists: "
             f"{COLLECTION_NAME}"
         )
         return
@@ -54,7 +54,7 @@ def create_collection(
     )
 
     print(
-        f"✓ Qdrant collection created: "
+        f"Qdrant collection created: "
         f"{COLLECTION_NAME}"
     )
 

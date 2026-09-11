@@ -1,0 +1,363 @@
+====================================================================================================
+FILE: 44072767_Central Bank Rates_with Heads - PANYAKO CLINTON.csv
+TYPE: .csv
+====================================================================================================
+ROWS: 423
+COLUMNS: 10
+SHEETS: N/A
+COLUMN NAMES: ['Unnamed: 0', 'Unnamed: 1', 'CENTRAL BANK RATES', 'Unnamed: 3', 'Unnamed: 4', 'Unnamed: 5', 'Unnamed: 6', 'Unnamed: 7', 'Unnamed: 8', 'Unnamed: 9']
+SAMPLE DATA:
+{'Unnamed: 0': 'YEAR', 'Unnamed: 1': 'MONTH', 'CENTRAL BANK RATES': 'Repo', 'Unnamed: 3': 'Reverse Repo', 'Unnamed: 4': 'Interbank Rate', 'Unnamed: 5': '91-Day Tbill', 'Unnamed: 6': '182-days Tbill', 'Unnamed: 7': '364-days Tbill', 'Unnamed: 8': 'Cash Reserve Requirement', 'Unnamed: 9': 'Central Bank Rate'}
+{'Unnamed: 0': '1991', 'Unnamed: 1': 'Jul', 'CENTRAL BANK RATES': '                 -  ', 'Unnamed: 3': '                 -  ', 'Unnamed: 4': nan, 'Unnamed: 5': '17.14', 'Unnamed: 6': '                 -  ', 'Unnamed: 7': '                 -  ', 'Unnamed: 8': '                 -  ', 'Unnamed: 9': '                 -  '}
+{'Unnamed: 0': nan, 'Unnamed: 1': 'Aug', 'CENTRAL BANK RATES': '                 -  ', 'Unnamed: 3': '                 -  ', 'Unnamed: 4': nan, 'Unnamed: 5': '16.7', 'Unnamed: 6': '                 -  ', 'Unnamed: 7': '                 -  ', 'Unnamed: 8': '                 -  ', 'Unnamed: 9': '                 -  '}
+
+====================================================================================================
+FILE: 537280676_Commercial banks Weighted Average Rates - PANYAKO CLINTON.csv
+TYPE: .csv
+====================================================================================================
+ROWS: 429
+COLUMNS: 6
+SHEETS: N/A
+COLUMN NAMES: ['Unnamed: 0', 'Unnamed: 1', "COMMERCIAL BANKS' WEIGHTED AVERAGE INTEREST RATES (%) 1/", 'Unnamed: 3', 'Unnamed: 4', 'Unnamed: 5']
+SAMPLE DATA:
+{'Unnamed: 0': 'YEAR', 'Unnamed: 1': 'MONTH', "COMMERCIAL BANKS' WEIGHTED AVERAGE INTEREST RATES (%) 1/": 'Deposit', 'Unnamed: 3': 'Savings', 'Unnamed: 4': 'Lending ', 'Unnamed: 5': 'Overdraft '}
+{'Unnamed: 0': '1991', 'Unnamed: 1': 'JUL', "COMMERCIAL BANKS' WEIGHTED AVERAGE INTEREST RATES (%) 1/": '13.5', 'Unnamed: 3': '12.97', 'Unnamed: 4': '16.71', 'Unnamed: 5': '16.15'}
+{'Unnamed: 0': nan, 'Unnamed: 1': 'AUG', "COMMERCIAL BANKS' WEIGHTED AVERAGE INTEREST RATES (%) 1/": '13.59', 'Unnamed: 3': '13.24', 'Unnamed: 4': '16.42', 'Unnamed: 5': '13.79'}
+
+====================================================================================================
+FILE: Annual GDP.csv
+TYPE: .csv
+====================================================================================================
+ROWS: 26
+COLUMNS: 4
+SHEETS: N/A
+COLUMN NAMES: ['Year', 'Nominal GDP prices (Ksh Million)', 'Annual GDP growth (%)', 'Real GDP prices (Ksh Million)']
+SAMPLE DATA:
+{'Year': 2025, 'Nominal GDP prices (Ksh Million)': '17,577,557', 'Annual GDP growth (%)': 4.6, 'Real GDP prices (Ksh Million)': '11,406,590'}
+{'Year': 2024, 'Nominal GDP prices (Ksh Million)': '16,232,295', 'Annual GDP growth (%)': 4.7, 'Real GDP prices (Ksh Million)': '10,901,563'}
+{'Year': 2023, 'Nominal GDP prices (Ksh Million)': '15,033,612', 'Annual GDP growth (%)': 5.6, 'Real GDP prices (Ksh Million)': '10,416,148'}
+
+====================================================================================================
+FILE: API_KEN_DS2_en_csv_v2_2387 - PANYAKO CLINTON.csv
+TYPE: .csv
+====================================================================================================
+ERROR: Error tokenizing data. C error: Expected 3 fields in line 5, saw 71
+
+
+====================================================================================================
+FILE: API_KEN_GC.DOD.TOTL.GD.ZS_EN_csv_v2_244437 - PANYAKO CLINTON.csv
+TYPE: .csv
+====================================================================================================
+ERROR: Error tokenizing data. C error: Expected 3 fields in line 5, saw 71
+
+
+====================================================================================================
+FILE: API_KEN_NE.EXP.GNFS.ZS_EN_csv_v2_244454 - PANYAKO CLINTON.csv
+TYPE: .csv
+====================================================================================================
+ROWS: 5
+COLUMNS: 70
+SHEETS: N/A
+COLUMN NAMES: ['Data Source', 'World Development Indicators', 'Unnamed: 2', 'Unnamed: 3', 'Unnamed: 4', 'Unnamed: 5', 'Unnamed: 6', 'Unnamed: 7', 'Unnamed: 8', 'Unnamed: 9', 'Unnamed: 10', 'Unnamed: 11', 'Unnamed: 12', 'Unnamed: 13', 'Unnamed: 14', 'Unnamed: 15', 'Unnamed: 16', 'Unnamed: 17', 'Unnamed: 18', 'Unnamed: 19', 'Unnamed: 20', 'Unnamed: 21', 'Unnamed: 22', 'Unnamed: 23', 'Unnamed: 24', 'Unnamed: 25', 'Unnamed: 26', 'Unnamed: 27', 'Unnamed: 28', 'Unnamed: 29', 'Unnamed: 30', 'Unnamed: 31', 'Unnamed: 32', 'Unnamed: 33', 'Unnamed: 34', 'Unnamed: 35', 'Unnamed: 36', 'Unnamed: 37', 'Unnamed: 38', 'Unnamed: 39', 'Unnamed: 40', 'Unnamed: 41', 'Unnamed: 42', 'Unnamed: 43', 'Unnamed: 44', 'Unnamed: 45', 'Unnamed: 46', 'Unnamed: 47', 'Unnamed: 48', 'Unnamed: 49', 'Unnamed: 50', 'Unnamed: 51', 'Unnamed: 52', 'Unnamed: 53', 'Unnamed: 54', 'Unnamed: 55', 'Unnamed: 56', 'Unnamed: 57', 'Unnamed: 58', 'Unnamed: 59', 'Unnamed: 60', 'Unnamed: 61', 'Unnamed: 62', 'Unnamed: 63', 'Unnamed: 64', 'Unnamed: 65', 'Unnamed: 66', 'Unnamed: 67', 'Unnamed: 68', 'Unnamed: 69']
+SAMPLE DATA:
+{'Data Source': nan, 'World Development Indicators': nan, 'Unnamed: 2': nan, 'Unnamed: 3': nan, 'Unnamed: 4': nan, 'Unnamed: 5': nan, 'Unnamed: 6': nan, 'Unnamed: 7': nan, 'Unnamed: 8': nan, 'Unnamed: 9': nan, 'Unnamed: 10': nan, 'Unnamed: 11': nan, 'Unnamed: 12': nan, 'Unnamed: 13': nan, 'Unnamed: 14': nan, 'Unnamed: 15': nan, 'Unnamed: 16': nan, 'Unnamed: 17': nan, 'Unnamed: 18': nan, 'Unnamed: 19': nan, 'Unnamed: 20': nan, 'Unnamed: 21': nan, 'Unnamed: 22': nan, 'Unnamed: 23': nan, 'Unnamed: 24': nan, 'Unnamed: 25': nan, 'Unnamed: 26': nan, 'Unnamed: 27': nan, 'Unnamed: 28': nan, 'Unnamed: 29': nan, 'Unnamed: 30': nan, 'Unnamed: 31': nan, 'Unnamed: 32': nan, 'Unnamed: 33': nan, 'Unnamed: 34': nan, 'Unnamed: 35': nan, 'Unnamed: 36': nan, 'Unnamed: 37': nan, 'Unnamed: 38': nan, 'Unnamed: 39': nan, 'Unnamed: 40': nan, 'Unnamed: 41': nan, 'Unnamed: 42': nan, 'Unnamed: 43': nan, 'Unnamed: 44': nan, 'Unnamed: 45': nan, 'Unnamed: 46': nan, 'Unnamed: 47': nan, 'Unnamed: 48': nan, 'Unnamed: 49': nan, 'Unnamed: 50': nan, 'Unnamed: 51': nan, 'Unnamed: 52': nan, 'Unnamed: 53': nan, 'Unnamed: 54': nan, 'Unnamed: 55': nan, 'Unnamed: 56': nan, 'Unnamed: 57': nan, 'Unnamed: 58': nan, 'Unnamed: 59': nan, 'Unnamed: 60': nan, 'Unnamed: 61': nan, 'Unnamed: 62': nan, 'Unnamed: 63': nan, 'Unnamed: 64': nan, 'Unnamed: 65': nan, 'Unnamed: 66': nan, 'Unnamed: 67': nan, 'Unnamed: 68': nan, 'Unnamed: 69': nan}
+{'Data Source': 'Last Updated Date', 'World Development Indicators': '13-07-26', 'Unnamed: 2': nan, 'Unnamed: 3': nan, 'Unnamed: 4': nan, 'Unnamed: 5': nan, 'Unnamed: 6': nan, 'Unnamed: 7': nan, 'Unnamed: 8': nan, 'Unnamed: 9': nan, 'Unnamed: 10': nan, 'Unnamed: 11': nan, 'Unnamed: 12': nan, 'Unnamed: 13': nan, 'Unnamed: 14': nan, 'Unnamed: 15': nan, 'Unnamed: 16': nan, 'Unnamed: 17': nan, 'Unnamed: 18': nan, 'Unnamed: 19': nan, 'Unnamed: 20': nan, 'Unnamed: 21': nan, 'Unnamed: 22': nan, 'Unnamed: 23': nan, 'Unnamed: 24': nan, 'Unnamed: 25': nan, 'Unnamed: 26': nan, 'Unnamed: 27': nan, 'Unnamed: 28': nan, 'Unnamed: 29': nan, 'Unnamed: 30': nan, 'Unnamed: 31': nan, 'Unnamed: 32': nan, 'Unnamed: 33': nan, 'Unnamed: 34': nan, 'Unnamed: 35': nan, 'Unnamed: 36': nan, 'Unnamed: 37': nan, 'Unnamed: 38': nan, 'Unnamed: 39': nan, 'Unnamed: 40': nan, 'Unnamed: 41': nan, 'Unnamed: 42': nan, 'Unnamed: 43': nan, 'Unnamed: 44': nan, 'Unnamed: 45': nan, 'Unnamed: 46': nan, 'Unnamed: 47': nan, 'Unnamed: 48': nan, 'Unnamed: 49': nan, 'Unnamed: 50': nan, 'Unnamed: 51': nan, 'Unnamed: 52': nan, 'Unnamed: 53': nan, 'Unnamed: 54': nan, 'Unnamed: 55': nan, 'Unnamed: 56': nan, 'Unnamed: 57': nan, 'Unnamed: 58': nan, 'Unnamed: 59': nan, 'Unnamed: 60': nan, 'Unnamed: 61': nan, 'Unnamed: 62': nan, 'Unnamed: 63': nan, 'Unnamed: 64': nan, 'Unnamed: 65': nan, 'Unnamed: 66': nan, 'Unnamed: 67': nan, 'Unnamed: 68': nan, 'Unnamed: 69': nan}
+{'Data Source': nan, 'World Development Indicators': nan, 'Unnamed: 2': nan, 'Unnamed: 3': nan, 'Unnamed: 4': nan, 'Unnamed: 5': nan, 'Unnamed: 6': nan, 'Unnamed: 7': nan, 'Unnamed: 8': nan, 'Unnamed: 9': nan, 'Unnamed: 10': nan, 'Unnamed: 11': nan, 'Unnamed: 12': nan, 'Unnamed: 13': nan, 'Unnamed: 14': nan, 'Unnamed: 15': nan, 'Unnamed: 16': nan, 'Unnamed: 17': nan, 'Unnamed: 18': nan, 'Unnamed: 19': nan, 'Unnamed: 20': nan, 'Unnamed: 21': nan, 'Unnamed: 22': nan, 'Unnamed: 23': nan, 'Unnamed: 24': nan, 'Unnamed: 25': nan, 'Unnamed: 26': nan, 'Unnamed: 27': nan, 'Unnamed: 28': nan, 'Unnamed: 29': nan, 'Unnamed: 30': nan, 'Unnamed: 31': nan, 'Unnamed: 32': nan, 'Unnamed: 33': nan, 'Unnamed: 34': nan, 'Unnamed: 35': nan, 'Unnamed: 36': nan, 'Unnamed: 37': nan, 'Unnamed: 38': nan, 'Unnamed: 39': nan, 'Unnamed: 40': nan, 'Unnamed: 41': nan, 'Unnamed: 42': nan, 'Unnamed: 43': nan, 'Unnamed: 44': nan, 'Unnamed: 45': nan, 'Unnamed: 46': nan, 'Unnamed: 47': nan, 'Unnamed: 48': nan, 'Unnamed: 49': nan, 'Unnamed: 50': nan, 'Unnamed: 51': nan, 'Unnamed: 52': nan, 'Unnamed: 53': nan, 'Unnamed: 54': nan, 'Unnamed: 55': nan, 'Unnamed: 56': nan, 'Unnamed: 57': nan, 'Unnamed: 58': nan, 'Unnamed: 59': nan, 'Unnamed: 60': nan, 'Unnamed: 61': nan, 'Unnamed: 62': nan, 'Unnamed: 63': nan, 'Unnamed: 64': nan, 'Unnamed: 65': nan, 'Unnamed: 66': nan, 'Unnamed: 67': nan, 'Unnamed: 68': nan, 'Unnamed: 69': nan}
+
+====================================================================================================
+FILE: API_KEN_NV.AGR.TOTL.ZS_EN_csv_v2_54579 - PANYAKO CLINTON.csv
+TYPE: .csv
+====================================================================================================
+ERROR: Error tokenizing data. C error: Expected 3 fields in line 5, saw 71
+
+
+====================================================================================================
+FILE: API_KEN_NY.GDP.MKTP.KD.ZG_EN_csv_v2_54579 - PANYAKO CLINTON.csv
+TYPE: .csv
+====================================================================================================
+ERROR: Error tokenizing data. C error: Expected 3 fields in line 5, saw 71
+
+
+====================================================================================================
+FILE: API_KEN_PA.NUS.FCRF_EN_csv_v2_244425 - PANYAKO CLINTON.csv
+TYPE: .csv
+====================================================================================================
+ERROR: Error tokenizing data. C error: Expected 3 fields in line 5, saw 71
+
+
+====================================================================================================
+FILE: API_KEN_SL.UEM.TOTL.ZS_EN_csv_v2_244520 - PANYAKO CLINTON.csv
+TYPE: .csv
+====================================================================================================
+ERROR: Error tokenizing data. C error: Expected 3 fields in line 5, saw 71
+
+
+====================================================================================================
+FILE: Chapter-6-International-Trade-and-Balance-of-Payments (1) - Fiona Wanjiku.xlsx
+TYPE: .xlsx
+====================================================================================================
+ERROR: `Import openpyxl` failed.  Use pip or conda to install the openpyxl package.
+
+====================================================================================================
+FILE: Daily KES Exchange Rates - PANYAKO CLINTON.xlsx
+TYPE: .xlsx
+====================================================================================================
+ERROR: `Import openpyxl` failed.  Use pip or conda to install the openpyxl package.
+
+====================================================================================================
+FILE: Inflation Rates.csv
+TYPE: .csv
+====================================================================================================
+ROWS: 260
+COLUMNS: 4
+SHEETS: N/A
+COLUMN NAMES: ['Year', 'Month', 'Annual Average Inflation', '12-Month Inflation']
+SAMPLE DATA:
+{'Year': 2005, 'Month': 'July', 'Annual Average Inflation': 15.34, '12-Month Inflation': 11.76}
+{'Year': 2005, 'Month': 'June', 'Annual Average Inflation': 15.1, '12-Month Inflation': 11.92}
+{'Year': 2005, 'Month': 'May', 'Annual Average Inflation': 14.61, '12-Month Inflation': 14.78}
+
+====================================================================================================
+FILE: Kenya - PANYAKO CLINTON.xls
+TYPE: .xls
+====================================================================================================
+ERROR: Excel file format cannot be determined, you must specify an engine manually.
+
+====================================================================================================
+FILE: kenya-climate-data-1991-2016-rainfallmm.csv
+TYPE: .csv
+====================================================================================================
+ROWS: 312
+COLUMNS: 3
+SHEETS: N/A
+COLUMN NAMES: ['Year', 'Month Average', 'Rainfall - (MM)']
+SAMPLE DATA:
+{'Year': 1991, 'Month Average': 'Jan Average', 'Rainfall - (MM)': 38.2847}
+{'Year': 1991, 'Month Average': 'Feb Average', 'Rainfall - (MM)': 12.7492}
+{'Year': 1991, 'Month Average': 'Mar Average', 'Rainfall - (MM)': 73.3656}
+
+====================================================================================================
+FILE: Kenya_Climate_Data_2020_2025_Extended - Immaculate Mokeira.csv
+TYPE: .csv
+====================================================================================================
+ROWS: 10960
+COLUMNS: 12
+SHEETS: N/A
+COLUMN NAMES: ['YEAR', 'MO', 'DY', 'T2M', 'T2M_MAX', 'T2M_MIN', 'PRECTOTCORR', 'RH2M', 'WS10M', 'ALLSKY_SFC_SW_DWN', 'EVPTRNS', 'COUNTY']
+SAMPLE DATA:
+{'YEAR': 2020, 'MO': 1, 'DY': 1, 'T2M': 20.0, 'T2M_MAX': 27.17, 'T2M_MIN': 14.07, 'PRECTOTCORR': 0.04, 'RH2M': 70.8, 'WS10M': 5.46, 'ALLSKY_SFC_SW_DWN': 7.4345, 'EVPTRNS': 0.457, 'COUNTY': 'Nairobi'}
+{'YEAR': 2020, 'MO': 1, 'DY': 2, 'T2M': 19.58, 'T2M_MAX': 25.65, 'T2M_MIN': 15.73, 'PRECTOTCORR': 1.01, 'RH2M': 79.03, 'WS10M': 6.01, 'ALLSKY_SFC_SW_DWN': 7.0834, 'EVPTRNS': 0.2441, 'COUNTY': 'Nairobi'}
+{'YEAR': 2020, 'MO': 1, 'DY': 3, 'T2M': 19.87, 'T2M_MAX': 25.96, 'T2M_MIN': 15.82, 'PRECTOTCORR': 0.67, 'RH2M': 78.48, 'WS10M': 6.28, 'ALLSKY_SFC_SW_DWN': 6.558, 'EVPTRNS': 0.2638, 'COUNTY': 'Nairobi'}
+
+====================================================================================================
+FILE: Metadata_Country_API_KEN_DS2_en_csv_v2_2387 - PANYAKO CLINTON.csv
+TYPE: .csv
+====================================================================================================
+ROWS: 1
+COLUMNS: 6
+SHEETS: N/A
+COLUMN NAMES: ['Country Code', 'Region', 'IncomeGroup', 'SpecialNotes', 'TableName', 'Unnamed: 5']
+SAMPLE DATA:
+{'Country Code': 'KEN', 'Region': 'Sub-Saharan Africa', 'IncomeGroup': 'Lower middle income', 'SpecialNotes': 'Fiscal year end: June 30; reporting period for national accounts data: CY.', 'TableName': 'Kenya', 'Unnamed: 5': nan}
+
+====================================================================================================
+FILE: Metadata_Country_API_KEN_GC.DOD.TOTL.GD.ZS_EN_csv_v2_244437 - PANYAKO CLINTON.csv
+TYPE: .csv
+====================================================================================================
+ROWS: 1
+COLUMNS: 6
+SHEETS: N/A
+COLUMN NAMES: ['Country Code', 'Region', 'IncomeGroup', 'SpecialNotes', 'TableName', 'Unnamed: 5']
+SAMPLE DATA:
+{'Country Code': 'KEN', 'Region': 'Sub-Saharan Africa', 'IncomeGroup': 'Lower middle income', 'SpecialNotes': 'Fiscal year end: June 30; reporting period for national accounts data: CY.', 'TableName': 'Kenya', 'Unnamed: 5': nan}
+
+====================================================================================================
+FILE: Metadata_Country_API_KEN_NE.EXP.GNFS.ZS_EN_csv_v2_244454 - PANYAKO CLINTON (1).csv
+TYPE: .csv
+====================================================================================================
+ROWS: 1
+COLUMNS: 6
+SHEETS: N/A
+COLUMN NAMES: ['Country Code', 'Region', 'IncomeGroup', 'SpecialNotes', 'TableName', 'Unnamed: 5']
+SAMPLE DATA:
+{'Country Code': 'KEN', 'Region': 'Sub-Saharan Africa', 'IncomeGroup': 'Lower middle income', 'SpecialNotes': 'Fiscal year end: June 30; reporting period for national accounts data: CY.', 'TableName': 'Kenya', 'Unnamed: 5': nan}
+
+====================================================================================================
+FILE: Metadata_Country_API_KEN_NE.EXP.GNFS.ZS_EN_csv_v2_244454 - PANYAKO CLINTON.csv
+TYPE: .csv
+====================================================================================================
+ROWS: 1
+COLUMNS: 6
+SHEETS: N/A
+COLUMN NAMES: ['Country Code', 'Region', 'IncomeGroup', 'SpecialNotes', 'TableName', 'Unnamed: 5']
+SAMPLE DATA:
+{'Country Code': 'KEN', 'Region': 'Sub-Saharan Africa', 'IncomeGroup': 'Lower middle income', 'SpecialNotes': 'Fiscal year end: June 30; reporting period for national accounts data: CY.', 'TableName': 'Kenya', 'Unnamed: 5': nan}
+
+====================================================================================================
+FILE: Metadata_Country_API_KEN_NV.AGR.TOTL.ZS_EN_csv_v2_54579 - PANYAKO CLINTON.csv
+TYPE: .csv
+====================================================================================================
+ROWS: 1
+COLUMNS: 6
+SHEETS: N/A
+COLUMN NAMES: ['Country Code', 'Region', 'IncomeGroup', 'SpecialNotes', 'TableName', 'Unnamed: 5']
+SAMPLE DATA:
+{'Country Code': 'KEN', 'Region': 'Sub-Saharan Africa', 'IncomeGroup': 'Lower middle income', 'SpecialNotes': 'Fiscal year end: June 30; reporting period for national accounts data: CY.', 'TableName': 'Kenya', 'Unnamed: 5': nan}
+
+====================================================================================================
+FILE: Metadata_Country_API_KEN_NY.GDP.MKTP.KD.ZG_EN_csv_v2_54579 - PANYAKO CLINTON.csv
+TYPE: .csv
+====================================================================================================
+ROWS: 1
+COLUMNS: 6
+SHEETS: N/A
+COLUMN NAMES: ['Country Code', 'Region', 'IncomeGroup', 'SpecialNotes', 'TableName', 'Unnamed: 5']
+SAMPLE DATA:
+{'Country Code': 'KEN', 'Region': 'Sub-Saharan Africa', 'IncomeGroup': 'Lower middle income', 'SpecialNotes': 'Fiscal year end: June 30; reporting period for national accounts data: CY.', 'TableName': 'Kenya', 'Unnamed: 5': nan}
+
+====================================================================================================
+FILE: Metadata_Country_API_KEN_PA.NUS.FCRF_EN_csv_v2_244425 - PANYAKO CLINTON.csv
+TYPE: .csv
+====================================================================================================
+ROWS: 1
+COLUMNS: 6
+SHEETS: N/A
+COLUMN NAMES: ['Country Code', 'Region', 'IncomeGroup', 'SpecialNotes', 'TableName', 'Unnamed: 5']
+SAMPLE DATA:
+{'Country Code': 'KEN', 'Region': 'Sub-Saharan Africa', 'IncomeGroup': 'Lower middle income', 'SpecialNotes': 'Fiscal year end: June 30; reporting period for national accounts data: CY.', 'TableName': 'Kenya', 'Unnamed: 5': nan}
+
+====================================================================================================
+FILE: Metadata_Country_API_KEN_SL.UEM.TOTL.ZS_EN_csv_v2_244520 - PANYAKO CLINTON.csv
+TYPE: .csv
+====================================================================================================
+ROWS: 1
+COLUMNS: 6
+SHEETS: N/A
+COLUMN NAMES: ['Country Code', 'Region', 'IncomeGroup', 'SpecialNotes', 'TableName', 'Unnamed: 5']
+SAMPLE DATA:
+{'Country Code': 'KEN', 'Region': 'Sub-Saharan Africa', 'IncomeGroup': 'Lower middle income', 'SpecialNotes': 'Fiscal year end: June 30; reporting period for national accounts data: CY.', 'TableName': 'Kenya', 'Unnamed: 5': nan}
+
+====================================================================================================
+FILE: Metadata_Indicator_API_KEN_DS2_en_csv_v2_2387 - PANYAKO CLINTON.csv
+TYPE: .csv
+====================================================================================================
+ROWS: 1510
+COLUMNS: 5
+SHEETS: N/A
+COLUMN NAMES: ['INDICATOR_CODE', 'INDICATOR_NAME', 'SOURCE_NOTE', 'SOURCE_ORGANIZATION', 'Unnamed: 4']
+SAMPLE DATA:
+{'INDICATOR_CODE': 'NY.GNP.PCAP.KN', 'INDICATOR_NAME': 'GNI per capita (constant LCU)', 'SOURCE_NOTE': 'Gross national income is the total income earned by all residents within an economic territory during an accounting period. It is equal to gross domestic product plus earned income receivable from abroad minus earned income payable abroad. The core indicator has been divided by the general population to achieve a per capita estimate.This indicator is expressed in constant prices, meaning the series has been adjusted to account for price changes over time. The reference year for this adjustment varies by country. This series is expressed in local currency units.', 'SOURCE_ORGANIZATION': 'Country official statistics, National Statistical Organizations and/or Central Banks;\nNational Accounts data files, Organisation for Economic Co-operation and Development (OECD);\nStaff estimates, World Bank (WB)', 'Unnamed: 4': nan}
+{'INDICATOR_CODE': 'NY.GNP.PCAP.CD', 'INDICATOR_NAME': 'GNI per capita, Atlas method (current US$)', 'SOURCE_NOTE': 'Gross national income is the total income earned by all residents within an economic territory during an accounting period. It is equal to gross domestic product plus earned income receivable from abroad minus earned income payable abroad. This figure is converted to U.S. dollars using the World Bank Atlas method, and divided by the midyear population. GNI, calculated in national currency, is usually converted to U.S. dollars at official exchange rates for comparisons across economies, although an alternative rate is used when the official exchange rate is judged to diverge by an exceptionally large margin from the rate actually applied in international transactions. To smooth fluctuations in prices and exchange rates, a special Atlas method of conversion is used by the World Bank. This applies a conversion factor that averages the exchange rate for a given year and the two preceding years, adjusted for differences in rates of inflation between the country, and through 2000, the G-5 countries (France, Germany, Japan, the United Kingdom, and the United States). From 2001, these countries include the Euro area, Japan, the United Kingdom, and the United States. This indicator is expressed in current prices, meaning no adjustment has been made to account for price changes over time. This indicator is expressed in United States dollars.', 'SOURCE_ORGANIZATION': 'Country official statistics, National Statistical Organizations and/or Central Banks;\nNational Accounts data files, Organisation for Economic Co-operation and Development (OECD);\nStaff estimates, World Bank (WB)', 'Unnamed: 4': nan}
+{'INDICATOR_CODE': 'NY.GNP.MKTP.KD.ZG', 'INDICATOR_NAME': 'GNI growth (annual %)', 'SOURCE_NOTE': 'Gross national income is the total income earned by all residents within an economic territory during an accounting period. It is equal to gross domestic product plus earned income receivable from abroad minus earned income payable abroad. This indicator denotes the percentage change over each previous year of the constant price (base year 2015) series in United States dollars.', 'SOURCE_ORGANIZATION': 'Country official statistics, National Statistical Organizations and/or Central Banks;\nNational Accounts data files, Organisation for Economic Co-operation and Development (OECD);\nStaff estimates, World Bank (WB)', 'Unnamed: 4': nan}
+
+====================================================================================================
+FILE: Metadata_Indicator_API_KEN_GC.DOD.TOTL.GD.ZS_EN_csv_v2_244437 - PANYAKO CLINTON.csv
+TYPE: .csv
+====================================================================================================
+ROWS: 1
+COLUMNS: 5
+SHEETS: N/A
+COLUMN NAMES: ['INDICATOR_CODE', 'INDICATOR_NAME', 'SOURCE_NOTE', 'SOURCE_ORGANIZATION', 'Unnamed: 4']
+SAMPLE DATA:
+{'INDICATOR_CODE': 'GC.DOD.TOTL.GD.ZS', 'INDICATOR_NAME': 'Central government debt, total (% of GDP)', 'SOURCE_NOTE': 'Debt is the entire stock of direct government fixed-term contractual obligations to others outstanding on a particular date. It includes domestic and foreign liabilities such as currency and money deposits, securities other than shares, and loans. It is the gross amount of government liabilities reduced by the amount of equity and financial derivatives held by the government. Because debt is a stock rather than a flow, it is measured as of a given date, usually the last day of the fiscal year. Central government is the part of general government that includes all administrative departments of the national executive, legislative, and judicial functions, other central agencies and those non-market producers controlled by the central government, whose competence extends normally over the whole economic territory. This indicator is expressed as a percentage of Gross Domestic Product (GDP) which is the total income earned through the production of goods and services in an economic territory during an accounting period.', 'SOURCE_ORGANIZATION': 'Government Finance Statistics Yearbook and data files, International Monetary Fund (IMF)', 'Unnamed: 4': nan}
+
+====================================================================================================
+FILE: Metadata_Indicator_API_KEN_NE.EXP.GNFS.ZS_EN_csv_v2_244454 - PANYAKO CLINTON.csv
+TYPE: .csv
+====================================================================================================
+ROWS: 1
+COLUMNS: 5
+SHEETS: N/A
+COLUMN NAMES: ['INDICATOR_CODE', 'INDICATOR_NAME', 'SOURCE_NOTE', 'SOURCE_ORGANIZATION', 'Unnamed: 4']
+SAMPLE DATA:
+{'INDICATOR_CODE': 'NE.EXP.GNFS.ZS', 'INDICATOR_NAME': 'Exports of goods and services (% of GDP)', 'SOURCE_NOTE': 'Exports of goods includes changes in the economic ownership of goods from residents of the compiling economy to non-residents, irrespective of physical movement of goods across national borders. Exports of services includes services provided by residents to non-residents. This indicator is expressed as a percentage of Gross Domestic Product (GDP) which is the total income earned through the production of goods and services in an economic territory during an accounting period.', 'SOURCE_ORGANIZATION': 'Country official statistics, National Statistical Offices (NSOs);\nNational Accounts data files, Central Banks;\nStaff estimates, World Bank (WB)', 'Unnamed: 4': nan}
+
+====================================================================================================
+FILE: Metadata_Indicator_API_KEN_NV.AGR.TOTL.ZS_EN_csv_v2_54579 - PANYAKO CLINTON.csv
+TYPE: .csv
+====================================================================================================
+ROWS: 1
+COLUMNS: 5
+SHEETS: N/A
+COLUMN NAMES: ['INDICATOR_CODE', 'INDICATOR_NAME', 'SOURCE_NOTE', 'SOURCE_ORGANIZATION', 'Unnamed: 4']
+SAMPLE DATA:
+{'INDICATOR_CODE': 'NV.AGR.TOTL.ZS', 'INDICATOR_NAME': 'Agriculture, forestry, and fishing, value added (% of GDP)', 'SOURCE_NOTE': 'Agriculture, forestry, and fishing corresponds to ISIC (Rev. 4) divisions 01-03 and includes the exploitation of vegetal and animal natural resources, comprising the activities of growing of crops, raising and breeding of animals, harvesting of timber and other plants, animals or animal products from a farm or their natural habitats.Value added is the contribution to the economy by a producer or an industry or an institutional sector, which is estimated by the total value of output produced and deducting the total value of intermediate consumption of goods and services used to produce that output. This indicator is expressed as a percentage of Gross Domestic Product (GDP) which is the total income earned through the production of goods and services in an economic territory during an accounting period. Note: For VAB countries, gross value added at factor cost is used as the denominator.', 'SOURCE_ORGANIZATION': 'Country official statistics, National Statistical Organizations and/or Central Banks;\nNational Accounts data files, Organisation for Economic Co-operation and Development (OECD);\nStaff estimates, World Bank (WB)', 'Unnamed: 4': nan}
+
+====================================================================================================
+FILE: Metadata_Indicator_API_KEN_NY.GDP.MKTP.KD.ZG_EN_csv_v2_54579 - PANYAKO CLINTON.csv
+TYPE: .csv
+====================================================================================================
+ROWS: 1
+COLUMNS: 5
+SHEETS: N/A
+COLUMN NAMES: ['INDICATOR_CODE', 'INDICATOR_NAME', 'SOURCE_NOTE', 'SOURCE_ORGANIZATION', 'Unnamed: 4']
+SAMPLE DATA:
+{'INDICATOR_CODE': 'NY.GDP.MKTP.KD.ZG', 'INDICATOR_NAME': 'GDP growth (annual %)', 'SOURCE_NOTE': 'Gross domestic product is the total income earned through the production of goods and services in an economic territory during an accounting period. It can be measured in three different ways: using either the expenditure approach, the income approach, or the production approach. This indicator denotes the percentage change over each previous year of the constant price (base year 2015) series in United States dollars.', 'SOURCE_ORGANIZATION': 'Country official statistics, National Statistical Organizations and/or Central Banks;\nNational Accounts data files, Organisation for Economic Co-operation and Development (OECD);\nStaff estimates, World Bank (WB)', 'Unnamed: 4': nan}
+
+====================================================================================================
+FILE: Metadata_Indicator_API_KEN_PA.NUS.FCRF_EN_csv_v2_244425 - PANYAKO CLINTON.csv
+TYPE: .csv
+====================================================================================================
+ROWS: 1
+COLUMNS: 5
+SHEETS: N/A
+COLUMN NAMES: ['INDICATOR_CODE', 'INDICATOR_NAME', 'SOURCE_NOTE', 'SOURCE_ORGANIZATION', 'Unnamed: 4']
+SAMPLE DATA:
+{'INDICATOR_CODE': 'PA.NUS.FCRF', 'INDICATOR_NAME': 'Official exchange rate (LCU per US$, period average)', 'SOURCE_NOTE': 'Official exchange rate refers to the exchange rate determined by national authorities or to the rate determined in the legally sanctioned exchange market. This indicator represents the ratio of Local Currency Units relative to United States dollars.This indicator is derived as an average over the reference period.', 'SOURCE_ORGANIZATION': 'International Financial Statistics database, International Monetary Fund (IMF)', 'Unnamed: 4': nan}
+
+====================================================================================================
+FILE: Metadata_Indicator_API_KEN_SL.UEM.TOTL.ZS_EN_csv_v2_244520 - PANYAKO CLINTON.csv
+TYPE: .csv
+====================================================================================================
+ROWS: 1
+COLUMNS: 5
+SHEETS: N/A
+COLUMN NAMES: ['INDICATOR_CODE', 'INDICATOR_NAME', 'SOURCE_NOTE', 'SOURCE_ORGANIZATION', 'Unnamed: 4']
+SAMPLE DATA:
+{'INDICATOR_CODE': 'SL.UEM.TOTL.ZS', 'INDICATOR_NAME': 'Unemployment, total (% of total labor force) (modeled ILO estimate)', 'SOURCE_NOTE': 'Unemployment refers to the share of the labor force that is without work but available for and seeking employment.', 'SOURCE_ORGANIZATION': 'ILO Modelled Estimates database (ILOEST), International Labour Organization (ILO), uri: https://ilostat.ilo.org/data/bulk/, publisher: ILOSTAT, type: external database, date accessed: January 17, 2026', 'Unnamed: 4': nan}
+
+====================================================================================================
+FILE: Monthly-Exchange-rate-period-average - PANYAKO CLINTON.csv
+TYPE: .csv
+====================================================================================================
+ROWS: 298
+COLUMNS: 32
+SHEETS: N/A
+COLUMN NAMES: ['Unnamed: 0', 'Kenya Shilling Monthly Average Exchange Rates\\1', 'Unnamed: 2', 'Unnamed: 3', 'Unnamed: 4', 'Unnamed: 5', 'Unnamed: 6', 'Unnamed: 7', 'Unnamed: 8', 'Unnamed: 9', 'Unnamed: 10', 'Unnamed: 11', 'Unnamed: 12', 'Unnamed: 13', 'Unnamed: 14', 'Unnamed: 15', 'Unnamed: 16', 'Unnamed: 17', 'Unnamed: 18', 'Unnamed: 19', 'Unnamed: 20', 'Unnamed: 21', 'Unnamed: 22', 'Unnamed: 23', 'Unnamed: 24', 'Unnamed: 25', 'Unnamed: 26', 'Unnamed: 27', 'Unnamed: 28', 'Unnamed: 29', 'Unnamed: 30', 'Unnamed: 31']
+SAMPLE DATA:
+{'Unnamed: 0': 'Year', 'Kenya Shilling Monthly Average Exchange Rates\\1': 'Month', 'Unnamed: 2': nan, 'Unnamed: 3': 'United States dollar', 'Unnamed: 4': 'Sterling pound', 'Unnamed: 5': 'Euro', 'Unnamed: 6': 'South Africa Rand', 'Unnamed: 7': 'Uganda shilling\\2', 'Unnamed: 8': 'Tanzania shilling\\2', 'Unnamed: 9': 'Rwanda Franc', 'Unnamed: 10': 'Burundi Franc', 'Unnamed: 11': 'AE Dirham', 'Unnamed: 12': 'Deutch Mark', 'Unnamed: 13': 'Canadian dollar', 'Unnamed: 14': 'French franc', 'Unnamed: 15': 'Swiss franc', 'Unnamed: 16': 'Dutch guilder', 'Unnamed: 17': 'Italian lira', 'Unnamed: 18': 'Belgium franc', 'Unnamed: 19': 'Japanese yen (100)', 'Unnamed: 20': 'Swdish kroner', 'Unnamed: 21': 'Norwegian kroner', 'Unnamed: 22': 'Danish kroner', 'Unnamed: 23': 'Austrian schilling', 'Unnamed: 24': 'Finn marka', 'Unnamed: 25': 'Spanish peseta', 'Unnamed: 26': 'Indian rupee', 'Unnamed: 27': 'Hong  kong dollar', 'Unnamed: 28': 'Singapore dollar', 'Unnamed: 29': 'Saudi riyal', 'Unnamed: 30': 'Chinese Yuan', 'Unnamed: 31': 'Australian dollar'}
+{'Unnamed: 0': '1993', 'Kenya Shilling Monthly Average Exchange Rates\\1': '1', 'Unnamed: 2': 'Jan-93', 'Unnamed: 3': '36.23', 'Unnamed: 4': '55.623', 'Unnamed: 5': nan, 'Unnamed: 6': nan, 'Unnamed: 7': nan, 'Unnamed: 8': nan, 'Unnamed: 9': nan, 'Unnamed: 10': nan, 'Unnamed: 11': nan, 'Unnamed: 12': '22.438', 'Unnamed: 13': '28.356', 'Unnamed: 14': '6.616', 'Unnamed: 15': '24.544', 'Unnamed: 16': '19.96', 'Unnamed: 17': '2.433', 'Unnamed: 18': '1.09', 'Unnamed: 19': '28.995', 'Unnamed: 20': '5.009', 'Unnamed: 21': '5.284', 'Unnamed: 22': '5.735', 'Unnamed: 23': '3.188', 'Unnamed: 24': '6.709', 'Unnamed: 25': '31.638', 'Unnamed: 26': '1.399', 'Unnamed: 27': nan, 'Unnamed: 28': nan, 'Unnamed: 29': nan, 'Unnamed: 30': nan, 'Unnamed: 31': nan}
+{'Unnamed: 0': '1993', 'Kenya Shilling Monthly Average Exchange Rates\\1': '2', 'Unnamed: 2': 'Feb-93', 'Unnamed: 3': '36.557', 'Unnamed: 4': '52.675', 'Unnamed: 5': nan, 'Unnamed: 6': nan, 'Unnamed: 7': nan, 'Unnamed: 8': nan, 'Unnamed: 9': nan, 'Unnamed: 10': nan, 'Unnamed: 11': nan, 'Unnamed: 12': '22.277', 'Unnamed: 13': '29.009', 'Unnamed: 14': '6.58', 'Unnamed: 15': '24.079', 'Unnamed: 16': '19.792', 'Unnamed: 17': '2.366', 'Unnamed: 18': '1.08', 'Unnamed: 19': '30.208', 'Unnamed: 20': '4.849', 'Unnamed: 21': '5.239', 'Unnamed: 22': '5.776', 'Unnamed: 23': '3.167', 'Unnamed: 24': '6.29', 'Unnamed: 25': '31.162', 'Unnamed: 26': '1.412', 'Unnamed: 27': nan, 'Unnamed: 28': nan, 'Unnamed: 29': nan, 'Unnamed: 30': nan, 'Unnamed: 31': nan}
+
+====================================================================================================
+FILE: P_Data_Extract_From_World_Development_Indicators - PANYAKO CLINTON.xlsx
+TYPE: .xlsx
+====================================================================================================
+ERROR: `Import openpyxl` failed.  Use pip or conda to install the openpyxl package.
+
+====================================================================================================
+FILE: wfp_food_prices_ken - Joy Sang.csv
+TYPE: .csv
+====================================================================================================
+ROWS: 28062
+COLUMNS: 16
+SHEETS: N/A
+COLUMN NAMES: ['date', 'admin1', 'admin2', 'market', 'market_id', 'latitude', 'longitude', 'category', 'commodity', 'commodity_id', 'unit', 'priceflag', 'pricetype', 'currency', 'price', 'usdprice']
+SAMPLE DATA:
+{'date': '2006-01-15', 'admin1': 'Coast', 'admin2': 'Mombasa', 'market': 'Mombasa', 'market_id': 191, 'latitude': -4.05, 'longitude': 39.67, 'category': 'cereals and tubers', 'commodity': 'Maize (white)', 'commodity_id': 67, 'unit': '90 KG', 'priceflag': 'actual', 'pricetype': 'Wholesale', 'currency': 'KES', 'price': 1480.0, 'usdprice': 20.58}
+{'date': '2006-01-15', 'admin1': 'Coast', 'admin2': 'Mombasa', 'market': 'Mombasa', 'market_id': 191, 'latitude': -4.05, 'longitude': 39.67, 'category': 'pulses and nuts', 'commodity': 'Beans', 'commodity_id': 50, 'unit': 'KG', 'priceflag': 'actual', 'pricetype': 'Wholesale', 'currency': 'KES', 'price': 33.63, 'usdprice': 0.47}
+{'date': '2006-01-15', 'admin1': 'Coast', 'admin2': 'Mombasa', 'market': 'Mombasa', 'market_id': 191, 'latitude': -4.05, 'longitude': 39.67, 'category': 'pulses and nuts', 'commodity': 'Beans (dry)', 'commodity_id': 262, 'unit': '90 KG', 'priceflag': 'actual', 'pricetype': 'Wholesale', 'currency': 'KES', 'price': 3246.0, 'usdprice': 45.15}
+
+====================================================================================================
+FILE: wfp_markets_ken - Joy Sang.csv
+TYPE: .csv
+====================================================================================================
+ROWS: 280
+COLUMNS: 7
+SHEETS: N/A
+COLUMN NAMES: ['market_id', 'market', 'countryiso3', 'admin1', 'admin2', 'latitude', 'longitude']
+SAMPLE DATA:
+{'market_id': 184, 'market': 'Nairobi', 'countryiso3': 'KEN', 'admin1': 'Nairobi', 'admin2': 'Nairobi', 'latitude': -1.28, 'longitude': 36.82}
+{'market_id': 185, 'market': 'Eldoret town (Uasin Gishu)', 'countryiso3': 'KEN', 'admin1': 'Rift Valley', 'admin2': 'Uasin Gishu', 'latitude': 0.52, 'longitude': 35.28}
+{'market_id': 186, 'market': 'Kisumu', 'countryiso3': 'KEN', 'admin1': 'Nyanza', 'admin2': 'Kisumu', 'latitude': -0.1, 'longitude': 34.75}
+

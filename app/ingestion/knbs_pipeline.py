@@ -7,10 +7,6 @@ from app.ingestion.knbs_document import (
     ingest_knbs_document,
 )
 
-from app.ingestion.knbs_document import (
-    ingest_knbs_document,
-)
-
 from app.ingestion.extractors.knbs_cpi import (
     extract_cpi_and_inflation,
 )

@@ -3,7 +3,6 @@
 .env.*
 !.env.example
 
-
 # Python
 .venv/
 venv/
@@ -11,51 +10,65 @@ env/
 __pycache__/
 *.py[cod]
 *.pyo
-env//
-
 
 # Testing
 .pytest_cache/
 .coverage
 htmlcov/
 
-
 # IDE
 .vscode/
 .idea/
 
-
 # OS
 .DS_Store
 Thumbs.db
-
 
 # Build artifacts
 build/
 dist/
 *.egg-info/
 
-
 # Jupyter
 .ipynb_checkpoints/
-
 
 # Logs
 *.log
 
+# Frontend
+frontend/node_modules/
+frontend/.next/
+frontend/out/
+frontend/.env.local
+frontend/.env.*.local
 
-# Raw source data
+# Raw and processed data
 data/raw/
+data/processed/
 
-
-# Hugging Face / ML caches
+# ML models and caches
+data/models/
 .cache/
 huggingface/
 .huggingface/
-
-
 
 # Local databases
 *.db
 *.sqlite
 *.sqlite3
+
+# PostgreSQL
+*.dump
+*.sql
+
+# Backups
+backups/
+
+# EDA documentation
+!data/eda/
+!data/eda/*.md
+
+# EDA notebooks
+!notebooks/eda/
+!notebooks/eda/*.ipynb
+!notebooks/eda/*.md

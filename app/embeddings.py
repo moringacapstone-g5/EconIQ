@@ -6,16 +6,29 @@ MODEL_NAME = "all-MiniLM-L6-v2"
 
 class EmbeddingModel:
     """
-    Wrapper around the sentence-transformers embedding model.
+    Reusable wrapper around the sentence-transformers
+    embedding model.
+
+    The model is loaded once and reused for subsequent
+    embedding requests.
     """
 
     def __init__(
         self,
         model_name: str = MODEL_NAME,
-    ):
+    ) -> None:
         self.model_name = model_name
+
+        print(
+            f"Loading embedding model: {model_name}"
+        )
+
         self.model = SentenceTransformer(
             model_name
+        )
+
+        print(
+            f"Embedding model loaded: {model_name}"
         )
 
     def embed_text(
@@ -43,7 +56,7 @@ class EmbeddingModel:
         texts: list[str],
     ) -> list[list[float]]:
         """
-        Generate embeddings for multiple texts.
+        Generate embeddings for multiple pieces of text.
         """
 
         if not texts:
@@ -63,3 +76,24 @@ class EmbeddingModel:
         )
 
         return vectors.tolist()
+
+
+# SINGLE SHARED EMBEDDING MODEL
+
+_embedding_model: EmbeddingModel | None = None
+
+
+def get_embedding_model() -> EmbeddingModel:
+    """
+    Return the shared embedding model.
+
+    The model is initialized only once for the lifetime
+    of the application process.
+    """
+
+    global _embedding_model
+
+    if _embedding_model is None:
+        _embedding_model = EmbeddingModel()
+
+    return _embedding_model

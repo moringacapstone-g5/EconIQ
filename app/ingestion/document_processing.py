@@ -3,7 +3,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from pathlib import Path
 
-from pypdf import PdfReader
+import pdfplumber
 
 
 @dataclass
@@ -15,7 +15,10 @@ class DocumentChunk:
 
 
 def clean_text(text: str) -> str:
-    """Clean extracted PDF text."""
+    """
+    Clean extracted PDF text while preserving
+    meaningful line boundaries.
+    """
 
     if not text:
         return ""
@@ -23,15 +26,20 @@ def clean_text(text: str) -> str:
     text = text.replace("\r\n", "\n")
     text = text.replace("\r", "\n")
 
-    lines = []
+    cleaned_lines: list[str] = []
 
     for line in text.split("\n"):
+        line = line.strip()
+
+        if not line:
+            continue
+
+        # Normalize repeated whitespace.
         line = " ".join(line.split())
 
-        if line:
-            lines.append(line)
+        cleaned_lines.append(line)
 
-    return "\n".join(lines)
+    return "\n".join(cleaned_lines)
 
 
 def extract_pdf_pages(
@@ -39,12 +47,10 @@ def extract_pdf_pages(
     local_path: str,
 ) -> list[dict]:
     """
-    Extract PDF text page-by-page.
+    Extract a PDF page-by-page using pdfplumber.
 
-    Each page keeps:
-    - document_id
-    - page_number
-    - text
+    Text and tables are extracted separately so that
+    structured information is less likely to be lost.
     """
 
     path = Path(local_path)
@@ -54,25 +60,97 @@ def extract_pdf_pages(
             f"Document not found: {path}"
         )
 
-    reader = PdfReader(str(path))
+    pages: list[dict] = []
 
-    pages = []
+    with pdfplumber.open(path) as pdf:
 
-    for page_number, page in enumerate(
-        reader.pages,
-        start=1,
-    ):
-        text = page.extract_text() or ""
+        for page_number, page in enumerate(
+            pdf.pages,
+            start=1,
+        ):
 
-        text = clean_text(text)
+            page_parts: list[str] = []
 
-        pages.append(
-            {
-                "document_id": document_id,
-                "page_number": page_number,
-                "text": text,
-            }
-        )
+            # -----------------------------------------
+            # TEXT
+            # -----------------------------------------
+
+            text = page.extract_text(
+                x_tolerance=2,
+                y_tolerance=3,
+            )
+
+            if text:
+                cleaned = clean_text(text)
+
+                if cleaned:
+                    page_parts.append(cleaned)
+
+            # -----------------------------------------
+            # TABLES
+            # -----------------------------------------
+
+            tables = page.extract_tables()
+
+            for table_index, table in enumerate(
+                tables,
+                start=1,
+            ):
+
+                if not table:
+                    continue
+
+                table_lines: list[str] = []
+
+                table_lines.append(
+                    f"TABLE {table_index}"
+                )
+
+                for row in table:
+
+                    if not row:
+                        continue
+
+                    cells = []
+
+                    for cell in row:
+
+                        if cell is None:
+                            cell = ""
+
+                        cell = " ".join(
+                            str(cell).split()
+                        )
+
+                        cells.append(cell)
+
+                    if not any(cells):
+                        continue
+
+                    table_lines.append(
+                        " | ".join(cells)
+                    )
+
+                if len(table_lines) > 1:
+                    page_parts.append(
+                        "\n".join(table_lines)
+                    )
+
+            combined_text = "\n\n".join(
+                page_parts
+            )
+
+            combined_text = clean_text(
+                combined_text
+            )
+
+            pages.append(
+                {
+                    "document_id": document_id,
+                    "page_number": page_number,
+                    "text": combined_text,
+                }
+            )
 
     return pages
 
@@ -85,6 +163,8 @@ def chunk_document_pages(
 ) -> list[DocumentChunk]:
     """
     Split document pages into overlapping chunks.
+
+    Chunks never cross page boundaries.
 
     Page and document provenance are preserved.
     """
@@ -101,10 +181,11 @@ def chunk_document_pages(
 
     if chunk_overlap >= chunk_size:
         raise ValueError(
-            "chunk_overlap must be smaller than chunk_size."
+            "chunk_overlap must be smaller than "
+            "chunk_size."
         )
 
-    chunks = []
+    chunks: list[DocumentChunk] = []
 
     chunk_index = 0
 
@@ -158,7 +239,11 @@ def process_pdf_document(
       ↓
     Extract pages
       ↓
-    Clean text
+    Extract text
+      ↓
+    Extract tables
+      ↓
+    Clean content
       ↓
     Chunk text
       ↓
