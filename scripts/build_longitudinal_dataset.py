@@ -84,7 +84,6 @@ def is_world_bank_dataset(df: pd.DataFrame) -> bool:
 
 def process_file(path: Path) -> pd.DataFrame | None:
     print()
-    print("-" * 80)
     print(f"FILE: {path.relative_to(PROCESSED_DIR)}")
 
     try:
@@ -196,9 +195,9 @@ def process_file(path: Path) -> pd.DataFrame | None:
 
 
 def main() -> None:
-    print("=" * 80)
+    print("-" * 80)
     print("EconIQ - WORLD BANK LONGITUDINAL DATA BUILDER")
-    print("=" * 80)
+    print("-" * 80)
 
     OUTPUT_DIR.mkdir(
         parents=True,
@@ -235,9 +234,9 @@ def main() -> None:
         )
 
     print()
-    print("=" * 80)
+    print("-" * 80)
     print("COMBINING DATASETS")
-    print("=" * 80)
+    print("-" * 80)
 
     longitudinal = pd.concat(
         datasets,
@@ -282,9 +281,9 @@ def main() -> None:
     )
 
     print()
-    print("=" * 80)
+    print("-" * 80)
     print("LONGITUDINAL DATASET CREATED")
-    print("=" * 80)
+    print("-" * 80)
     print(f"Files processed       : {processed_files}")
     print(f"Total observations    : {len(longitudinal):,}")
     print(f"Countries             : {longitudinal['country_code'].nunique():,}")
@@ -292,7 +291,7 @@ def main() -> None:
     print(f"First year            : {longitudinal['year'].min()}")
     print(f"Last year             : {longitudinal['year'].max()}")
     print(f"Output                : {OUTPUT_FILE}")
-    print("=" * 80)
+    print("-" * 80)
 
     print()
     print("SAMPLE:")

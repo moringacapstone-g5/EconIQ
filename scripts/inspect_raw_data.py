@@ -408,9 +408,9 @@ def main():
         file.write(create_markdown_report(results))
 
     print("")
-    print("=" * 80)
+    print("-" * 80)
     print("INSPECTION COMPLETE")
-    print("=" * 80)
+    print("-" * 80)
     print(f"Files inspected: {len(files)}")
     print(f"JSON report: {json_path}")
     print(f"Markdown report: {markdown_path}")

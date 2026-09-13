@@ -1,163 +1,206 @@
-"use client";
+﻿"use client";
 
+import { useEffect, useState } from "react";
 import {
-  Activity,
-  ArrowUpRight,
-  BarChart3,
-  Globe2,
-} from "lucide-react";
-
+  getFoodPriceForecast,
+  getInflationForecast,
+  getLatestAnalytics,
+  type FoodPriceForecast,
+  type InflationForecast,
+  type LatestAnalytics,
+} from "@/lib/api";
 import MetricCard from "./MetricCard";
 
 export default function EconomicPulse() {
+  const [inflation, setInflation] = useState<LatestAnalytics | null>(null);
+  const [gdp, setGdp] = useState<LatestAnalytics | null>(null);
+  const [exchangeRate, setExchangeRate] =
+    useState<LatestAnalytics | null>(null);
+  const [interestRate, setInterestRate] =
+    useState<LatestAnalytics | null>(null);
+
+  const [inflationForecast, setInflationForecast] =
+    useState<InflationForecast | null>(null);
+  const [foodForecast, setFoodForecast] =
+    useState<FoodPriceForecast | null>(null);
+
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    async function loadData() {
+      try {
+        setLoading(true);
+        setError(null);
+
+        const [
+          inflationData,
+          gdpData,
+          exchangeRateData,
+          interestRateData,
+          inflationForecastData,
+          foodForecastData,
+        ] = await Promise.all([
+          getLatestAnalytics("KE", "INFLATION"),
+          getLatestAnalytics("KE", "GDP_GROWTH"),
+          getLatestAnalytics("KE", "EXCHANGE_RATE"),
+          getLatestAnalytics("KE", "INTEREST_RATE"),
+          getInflationForecast(),
+          getFoodPriceForecast("Beans (dry)"),
+        ]);
+
+        setInflation(inflationData);
+        setGdp(gdpData);
+        setExchangeRate(exchangeRateData);
+        setInterestRate(interestRateData);
+        setInflationForecast(inflationForecastData);
+        setFoodForecast(foodForecastData);
+      } catch (err) {
+        console.error("ECONIQ dashboard error:", err);
+
+        setError(
+          err instanceof Error
+            ? err.message
+            : "Unable to load economic data.",
+        );
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    loadData();
+  }, []);
+
+  if (loading) {
+    return (
+      <section className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+        {Array.from({ length: 4 }).map((_, index) => (
+          <div
+            key={index}
+            className="h-32 animate-pulse rounded-2xl border border-white/10 bg-white/[0.03]"
+          />
+        ))}
+      </section>
+    );
+  }
+
+  if (error) {
+    return (
+      <section className="rounded-2xl border border-red-400/20 bg-red-400/5 p-5">
+        <p className="text-sm font-medium text-red-300">
+          Unable to load economic data
+        </p>
+        <p className="mt-2 text-sm text-white/50">{error}</p>
+      </section>
+    );
+  }
+
   return (
-    <section className="border-t border-white/[0.06] py-10">
-      <div className="mb-6 flex items-end justify-between">
-        <div>
-          <div className="mb-2 flex items-center gap-2">
-            <Activity
-              size={14}
-              className="text-white/30"
-            />
-
-            <p className="text-[10px] uppercase tracking-[0.2em] text-white/25">
-              Economic Pulse
-            </p>
-          </div>
-
-          <h2 className="text-xl font-medium">
-            Kenya
-          </h2>
-
-          <p className="mt-1 text-xs text-white/30">
-            Latest available economic indicators
-          </p>
-        </div>
-
-        <button
-          className="
-            hidden
-            items-center
-            gap-2
-            text-xs
-            text-white/35
-            transition
-            hover:text-white
-            sm:flex
-          "
-        >
-          Explore data
-          <ArrowUpRight size={13} />
-        </button>
-      </div>
-
-      <div className="mb-5 flex items-center gap-2 rounded-xl border border-white/[0.06] bg-white/[0.02] px-4 py-3">
-        <Globe2
-          size={14}
-          className="text-white/30"
-        />
-
-        <span className="text-xs text-white/35">
-          Kenya · July 2026
-        </span>
-
-        <span className="ml-auto flex items-center gap-1 text-[10px] uppercase tracking-wider text-white/20">
-          <span className="h-1.5 w-1.5 rounded-full bg-emerald-400/60" />
-          Latest
-        </span>
-      </div>
-
-      <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+    <section className="space-y-4">
+      <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
         <MetricCard
           label="Inflation"
-          value="6.5%"
-          description="Year-on-year · July 2026"
-          change="0.2% monthly"
-          trend="up"
+          value={inflation ? `${inflation.value.toFixed(2)}%` : "—"}
+          detail={
+            inflation
+              ? `Latest · ${inflation.date}`
+              : "No data available"
+          }
         />
 
         <MetricCard
           label="GDP Growth"
-          value="—"
-          description="Economic growth indicator"
+          value={gdp ? `${gdp.value.toFixed(2)}%` : "—"}
+          detail={
+            gdp
+              ? `Latest · ${gdp.date}`
+              : "No data available"
+          }
         />
 
         <MetricCard
           label="Exchange Rate"
-          value="—"
-          description="KES exchange indicator"
+          value={
+            exchangeRate
+              ? `KES ${exchangeRate.value.toFixed(2)}`
+              : "—"
+          }
+          detail={
+            exchangeRate
+              ? `KES / USD · ${exchangeRate.date}`
+              : "No data available"
+          }
         />
 
         <MetricCard
           label="Interest Rate"
-          value="—"
-          description="Monetary policy indicator"
+          value={
+            interestRate
+              ? `${interestRate.value.toFixed(2)}%`
+              : "—"
+          }
+          detail={
+            interestRate
+              ? `Latest · ${interestRate.date}`
+              : "No data available"
+          }
         />
       </div>
 
-      <div className="mt-3 grid gap-3 lg:grid-cols-3">
-        <div className="rounded-2xl border border-white/[0.06] bg-white/[0.02] p-5">
-          <div className="flex items-center gap-2">
-            <BarChart3
-              size={15}
-              className="text-white/25"
-            />
+      <div className="grid gap-4 md:grid-cols-2">
+        {inflationForecast && (
+          <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-5">
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-xs uppercase tracking-[0.18em] text-white/40">
+                  Inflation forecast
+                </p>
 
-            <span className="text-xs text-white/35">
-              Food inflation
-            </span>
+                <p className="mt-2 text-2xl font-semibold text-white">
+                  {inflationForecast.forecast_inflation.toFixed(2)}%
+                </p>
+              </div>
+
+              <span className="rounded-full border border-white/10 px-3 py-1 text-xs text-white/50">
+                {inflationForecast.forecast_period}
+              </span>
+            </div>
+
+            <p className="mt-3 text-sm text-white/50">
+              Current:{" "}
+              {inflationForecast.current_inflation.toFixed(2)}%
+              {" · "}
+              {inflationForecast.model}
+            </p>
           </div>
+        )}
 
-          <div className="mt-5 text-2xl font-medium">
-            9.0%
+        {foodForecast && (
+          <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-5">
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-xs uppercase tracking-[0.18em] text-white/40">
+                  Food price forecast
+                </p>
+
+                <p className="mt-2 text-2xl font-semibold text-white">
+                  KES {foodForecast.forecast_price.toFixed(2)}
+                </p>
+              </div>
+
+              <span className="rounded-full border border-white/10 px-3 py-1 text-xs text-white/50">
+                {foodForecast.commodity}
+              </span>
+            </div>
+
+            <p className="mt-3 text-sm text-white/50">
+              Current: KES {foodForecast.current_price.toFixed(2)}
+              {" · "}
+              {foodForecast.percentage_change >= 0 ? "+" : ""}
+              {foodForecast.percentage_change.toFixed(2)}%
+            </p>
           </div>
-
-          <p className="mt-1 text-xs text-white/25">
-            Year-on-year · July 2026
-          </p>
-        </div>
-
-        <div className="rounded-2xl border border-white/[0.06] bg-white/[0.02] p-5">
-          <div className="flex items-center gap-2">
-            <BarChart3
-              size={15}
-              className="text-white/25"
-            />
-
-            <span className="text-xs text-white/35">
-              Transport inflation
-            </span>
-          </div>
-
-          <div className="mt-5 text-2xl font-medium">
-            15.6%
-          </div>
-
-          <p className="mt-1 text-xs text-white/25">
-            Year-on-year · July 2026
-          </p>
-        </div>
-
-        <div className="rounded-2xl border border-white/[0.06] bg-white/[0.02] p-5">
-          <div className="flex items-center gap-2">
-            <BarChart3
-              size={15}
-              className="text-white/25"
-            />
-
-            <span className="text-xs text-white/35">
-              Housing & utilities
-            </span>
-          </div>
-
-          <div className="mt-5 text-2xl font-medium">
-            3.2%
-          </div>
-
-          <p className="mt-1 text-xs text-white/25">
-            Year-on-year · July 2026
-          </p>
-        </div>
+        )}
       </div>
     </section>
   );

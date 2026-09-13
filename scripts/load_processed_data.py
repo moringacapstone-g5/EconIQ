@@ -201,9 +201,9 @@ def load_dataset(engine, csv_path: Path) -> bool:
 
 
 def main() -> None:
-    print("=" * 80)
+    print("-" * 80)
     print("EconIQ - PROCESSED DATASET LOADER")
-    print("=" * 80)
+    print("-" * 80)
 
     print(f"Processed directory:")
     print(PROCESSED_DIR)
@@ -256,14 +256,14 @@ def main() -> None:
             print(f"ERROR: {exc}")
 
     print()
-    print("=" * 80)
+    print("-" * 80)
     print("FINAL SUMMARY")
-    print("=" * 80)
+    print("-" * 80)
     print(f"CSV files discovered : {len(csv_files)}")
     print(f"Datasets loaded      : {loaded}")
     print(f"Datasets skipped     : {skipped}")
     print(f"Datasets failed      : {failed}")
-    print("=" * 80)
+    print("-" * 80)
 
     print()
     print("Run this SQL to see everything loaded:")

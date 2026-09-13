@@ -8,9 +8,8 @@ from sqlalchemy import create_engine
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 
-# ---------------------------------------------------------
+
 # Configuration
-# ---------------------------------------------------------
 
 load_dotenv()
 
@@ -33,9 +32,7 @@ MODELS_DIR.mkdir(parents=True, exist_ok=True)
 CSV_PATH = PROCESSED_DIR / "macro_inflation_forecast.csv"
 MODEL_PATH = MODELS_DIR / "macro_inflation_forecast_rf.joblib"
 
-# ---------------------------------------------------------
 # Load data from PostgreSQL
-# ---------------------------------------------------------
 
 engine = create_engine(DATABASE_URL)
 
@@ -61,9 +58,7 @@ ORDER BY date;
 
 df = pd.read_sql(query, engine)
 
-# ---------------------------------------------------------
 # Basic validation
-# ---------------------------------------------------------
 
 print("\n=== Model 2: Macroeconomic Inflation Forecast ===")
 print(f"Rows: {len(df)}")
@@ -78,18 +73,14 @@ if df.isnull().any().any():
     print(df.isnull().sum()[df.isnull().sum() > 0])
     raise ValueError("Modeling dataset contains missing values.")
 
-# ---------------------------------------------------------
 # Save canonical processed CSV
-# ---------------------------------------------------------
 
 df.to_csv(CSV_PATH, index=False)
 
 print(f"\nProcessed CSV saved to:")
 print(CSV_PATH)
 
-# ---------------------------------------------------------
 # Features and target
-# ---------------------------------------------------------
 
 features = [
     "inflation_12m",
@@ -111,9 +102,7 @@ target = "target_inflation_next_month"
 X = df[features]
 y = df[target]
 
-# ---------------------------------------------------------
 # Chronological train / validation / test split
-# ---------------------------------------------------------
 
 n = len(df)
 
@@ -164,10 +153,8 @@ def evaluate_model(name, y_true, predictions):
         "r2": r2,
     }
 
-# ---------------------------------------------------------
 # Naive baseline
 # Prediction = current month's inflation
-# ---------------------------------------------------------
 
 baseline_val_predictions = X_val["inflation_12m"].values
 
@@ -185,9 +172,7 @@ baseline_test = evaluate_model(
     baseline_test_predictions,
 )
 
-# ---------------------------------------------------------
 # Random Forest
-# ---------------------------------------------------------
 
 rf = RandomForestRegressor(
     n_estimators=500,
@@ -208,9 +193,7 @@ rf_val = evaluate_model(
     rf_val_predictions,
 )
 
-# ---------------------------------------------------------
 # Compare validation performance
-# ---------------------------------------------------------
 
 print("\n=== Validation Comparison ===")
 
@@ -224,9 +207,7 @@ if rf_val["rmse"] < baseline_val["rmse"]:
 else:
     print("Random Forest does NOT beat the naive baseline on RMSE.")
 
-# ---------------------------------------------------------
 # Retrain Random Forest on train + validation
-# ---------------------------------------------------------
 
 X_train_val = X.iloc[:val_end]
 y_train_val = y.iloc[:val_end]
@@ -241,9 +222,7 @@ final_rf = RandomForestRegressor(
 
 final_rf.fit(X_train_val, y_train_val)
 
-# ---------------------------------------------------------
 # Final untouched test evaluation
-# ---------------------------------------------------------
 
 final_test_predictions = final_rf.predict(X_test)
 
@@ -253,9 +232,7 @@ final_rf_test = evaluate_model(
     final_test_predictions,
 )
 
-# ---------------------------------------------------------
 # Feature importance
-# ---------------------------------------------------------
 
 importance = pd.DataFrame(
     {
@@ -267,9 +244,7 @@ importance = pd.DataFrame(
 print("\n=== Feature Importance ===")
 print(importance.to_string(index=False))
 
-# ---------------------------------------------------------
 # Save model
-# ---------------------------------------------------------
 
 model_artifact = {
     "model": final_rf,
@@ -285,4 +260,4 @@ joblib.dump(model_artifact, MODEL_PATH)
 print("\nTrained model saved to:")
 print(MODEL_PATH)
 
-print("\n=== Model 2 Complete ===")
+print("\n Model 2 Complete ")

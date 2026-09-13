@@ -415,12 +415,9 @@ def main():
         )
 
     print()
-    print("=" * 70)
     print("EconIQ RAW DATA STANDARDIZATION")
-    print("=" * 70)
     print(f"Files discovered: {len(files)}")
     print(f"Manifest: {manifest_path}")
-    print("=" * 70)
 
     for item in manifest:
 

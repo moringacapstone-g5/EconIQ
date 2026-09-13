@@ -4,6 +4,7 @@ from app.api.v1 import (
     analytics,
     countries,
     documents,
+    forecasts,
     indicators,
     observations,
     rag,
@@ -40,4 +41,8 @@ api_router.include_router(
 
 api_router.include_router(
     documents.router
+)
+
+api_router.include_router(
+    forecasts.router
 )

@@ -42,24 +42,46 @@ async function apiFetch<T>(
       data !== null &&
       "detail" in data
     ) {
-      throw new Error(
-        String(
-          (data as { detail: unknown }).detail,
-        ),
-      );
+      const detail = (data as { detail: unknown }).detail;
+
+      if (Array.isArray(detail)) {
+        const messages = detail
+          .map((error) => {
+            if (
+              typeof error === "object" &&
+              error !== null &&
+              "loc" in error &&
+              "msg" in error
+            ) {
+              const item = error as {
+                loc?: unknown;
+                msg?: unknown;
+              };
+
+              const location = Array.isArray(item.loc)
+                ? item.loc.join(".")
+                : "";
+
+              return location
+                ? `${location}: ${String(item.msg)}`
+                : String(item.msg);
+            }
+
+            return String(error);
+          })
+          .join("; ");
+
+        throw new Error(messages);
+      }
+
+      throw new Error(String(detail));
     }
 
-    throw new Error(
-      `ECONIQ API error ${response.status}`,
-    );
+    throw new Error(`ECONIQ API error ${response.status}`);
   }
 
   return data as T;
 }
-
-/* ============================================================
-   COUNTRIES
-============================================================ */
 
 export interface Country {
   id: number;
@@ -73,10 +95,6 @@ export async function getCountries() {
   return apiFetch<Country[]>("/countries");
 }
 
-/* ============================================================
-   INDICATORS
-============================================================ */
-
 export interface Indicator {
   id: number;
   code: string;
@@ -89,25 +107,17 @@ export async function getIndicators() {
   return apiFetch<Indicator[]>("/indicators");
 }
 
-/* ============================================================
-   OBSERVATIONS
-============================================================ */
-
 export interface Observation {
   id?: number;
   country_id?: number;
   indicator_id?: number;
   source_id?: number;
-
   observation_date: string;
   value: number;
-
   country?: string;
   country_code?: string;
-
   indicator?: string;
   indicator_code?: string;
-
   source?: string;
 }
 
@@ -118,38 +128,13 @@ export interface ObservationParams {
   end_date?: string;
 }
 
-export async function getObservations(
-  params?: ObservationParams,
-) {
+export async function getObservations(params?: ObservationParams) {
   const searchParams = new URLSearchParams();
 
-  if (params?.country) {
-    searchParams.set(
-      "country",
-      params.country,
-    );
-  }
-
-  if (params?.indicator) {
-    searchParams.set(
-      "indicator",
-      params.indicator,
-    );
-  }
-
-  if (params?.start_date) {
-    searchParams.set(
-      "start_date",
-      params.start_date,
-    );
-  }
-
-  if (params?.end_date) {
-    searchParams.set(
-      "end_date",
-      params.end_date,
-    );
-  }
+  if (params?.country) searchParams.set("country", params.country);
+  if (params?.indicator) searchParams.set("indicator", params.indicator);
+  if (params?.start_date) searchParams.set("start_date", params.start_date);
+  if (params?.end_date) searchParams.set("end_date", params.end_date);
 
   const query = searchParams.toString();
 
@@ -158,52 +143,44 @@ export async function getObservations(
   );
 }
 
-/* ============================================================
-   ANALYTICS
-============================================================ */
-
 export interface LatestAnalytics {
   country: string;
   country_code: string;
-
-  indicators: Record<
-    string,
-    {
-      value: number;
-      date: string;
-    }
-  >;
+  indicator: string;
+  indicator_code: string;
+  value: number;
+  date: string;
 }
 
 export async function getLatestAnalytics(
   country = "KE",
+  indicator = "INFLATION",
 ) {
+  const searchParams = new URLSearchParams({
+    country,
+    indicator,
+  });
+
   return apiFetch<LatestAnalytics>(
-    `/analytics/latest?country=${encodeURIComponent(
-      country,
-    )}`,
+    `/analytics/latest?${searchParams.toString()}`,
   );
 }
 
 export interface HistoricalAnalytics {
   country: string;
   country_code: string;
-
   indicator: string;
   indicator_code: string;
-
   observations: {
     date: string;
     value: number;
   }[];
 }
 
-export async function getHistoricalAnalytics(
-  params: {
-    country: string;
-    indicator: string;
-  },
-) {
+export async function getHistoricalAnalytics(params: {
+  country: string;
+  indicator: string;
+}) {
   const searchParams = new URLSearchParams({
     country: params.country,
     indicator: params.indicator,
@@ -214,9 +191,49 @@ export async function getHistoricalAnalytics(
   );
 }
 
-/* ============================================================
-   RAG
-============================================================ */
+export interface InflationForecast {
+  country: string;
+  country_code: string;
+  indicator: string;
+  indicator_code: string;
+  forecast_period: string;
+  latest_data_date: string;
+  current_inflation: number;
+  forecast_inflation: number;
+  unit: string;
+  model: string;
+  model_file: string;
+}
+
+export async function getInflationForecast() {
+  return apiFetch<InflationForecast>("/forecasts/inflation");
+}
+
+export interface FoodPriceForecast {
+  country: string;
+  country_code: string;
+  commodity: string;
+  latest_model_data_date: string;
+  forecast_date: string | null;
+  current_price: number;
+  forecast_price: number;
+  price_change: number;
+  percentage_change: number;
+  unit: string;
+  forecast_period: string;
+  data_status: string;
+  weather_data_available_through: string;
+  model: string;
+  model_file: string;
+}
+
+export async function getFoodPriceForecast(
+  commodity = "Beans (dry)",
+) {
+  return apiFetch<FoodPriceForecast>(
+    `/forecasts/food-prices?commodity=${encodeURIComponent(commodity)}`,
+  );
+}
 
 export interface RAGSource {
   document_id: number;
@@ -232,18 +249,40 @@ export interface RagResponse {
   sources: RAGSource[];
 }
 
-export async function askEconIQ(
-  question: string,
-  limit = 7,
-) {
+export async function askEconIQ(question: string, limit = 7) {
   return apiFetch<RagResponse>(
     "/rag/ask",
     {
       method: "POST",
-
       body: JSON.stringify({
         question,
         limit,
+      }),
+    },
+  );
+}
+
+export interface FoodCommodity {
+  commodity: string;
+  latest_complete_date: string;
+  complete_rows: number;
+}
+
+export async function getAvailableFoodCommodities() {
+  return apiFetch<FoodCommodity[]>(
+    "/forecasts/food-prices/commodities",
+  );
+}
+
+export async function predictFoodPrice(
+  commodity: string,
+) {
+  return apiFetch<FoodPriceForecast>(
+    "/forecasts/food-prices",
+    {
+      method: "POST",
+      body: JSON.stringify({
+        commodity,
       }),
     },
   );
