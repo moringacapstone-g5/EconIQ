@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import {
   ArrowUp,
@@ -342,7 +342,7 @@ function ThinkingIndicator() {
         </div>
 
         <span className="text-xs text-white/40">
-          ECONIQ is analyzing the evidence…
+          ECONIQ is analyzing the evidence...
         </span>
       </div>
     </div>

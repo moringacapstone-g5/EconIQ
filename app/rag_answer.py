@@ -3,6 +3,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 
 from openai import OpenAI
+from openai import APIConnectionError, APIStatusError, RateLimitError
 
 from app.core.config import settings
 from app.retrieval import RetrievedChunk
@@ -592,13 +593,37 @@ Do not cite unsupported pages.
 Keep the final answer concise but analytical.
 """
 
-    response = client.responses.create(
-        model=settings.openai_model,
-        instructions=SYSTEM_PROMPT,
-        input=user_prompt,
-    )
+    try:
+        response = client.responses.create(
+            model=settings.openai_model,
+            instructions=SYSTEM_PROMPT,
+            input=user_prompt,
+        )
 
-    return response.output_text.strip()
+        return response.output_text.strip()
+
+    except RateLimitError:
+        return (
+            "EconIQ retrieved the relevant economic evidence, "
+            "but the AI answer could not be generated because "
+            "the configured language-model API has exhausted "
+            "its available credits."
+        )
+
+    except APIConnectionError:
+        return (
+            "EconIQ retrieved the relevant economic evidence, "
+            "but the AI answer could not be generated because "
+            "the language-model service could not be reached."
+        )
+
+    except APIStatusError as exc:
+        return (
+            "EconIQ retrieved the relevant economic evidence, "
+            "but the AI answer could not be generated because "
+            f"the language-model service returned an API error "
+            f"(status {exc.status_code})."
+        )
 
 
 # ============================================================
@@ -638,9 +663,7 @@ def main():
     question = input("Ask ECONIQ: ").strip()
     
     print()
-    print("================================")
     print("ECONIQ RAG ANSWER TEST")
-    print("================================")
     print()
 
     print(
@@ -679,9 +702,7 @@ def main():
         )
 
         print()
-        print("================================")
         print("ECONIQ ANSWER")
-        print("================================")
         print()
 
         print(
@@ -689,9 +710,7 @@ def main():
         )
 
         print()
-        print("================================")
         print("RETRIEVAL SOURCES")
-        print("================================")
 
         for index, source in enumerate(
             result.sources,

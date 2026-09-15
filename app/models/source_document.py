@@ -44,6 +44,12 @@ class SourceDocument(Base):
         nullable=False,
     )
 
+    content_hash: Mapped[str] = mapped_column(
+        String(64),
+        nullable=False,
+        unique=True,
+    )
+
     ingested_at: Mapped[datetime] = mapped_column(
         DateTime,
         nullable=False,

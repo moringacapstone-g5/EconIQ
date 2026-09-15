@@ -32,7 +32,6 @@ class RAGSource(BaseModel):
     chunk_id: int
     chunk_index: int
     page_number: int
-    score: float
 
 
 class RAGResponse(BaseModel):
@@ -90,7 +89,6 @@ def ask_rag(
                     chunk_id=source.chunk_id,
                     chunk_index=source.chunk_index,
                     page_number=source.page_number,
-                    score=source.score,
                 )
                 for source in result.sources
             ],
