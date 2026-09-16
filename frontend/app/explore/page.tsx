@@ -168,9 +168,9 @@ export default function ExplorePage() {
             </div>
 
             <h1 className="text-5xl font-medium tracking-[-0.06em] sm:text-6xl lg:text-7xl">
-              Explore the
-              <span className="block text-white/35">
-                economy.
+              Ask EconIQ
+              <span className="block text-white/25">
+                {/* Economic Intelligence. */}
               </span>
             </h1>
 

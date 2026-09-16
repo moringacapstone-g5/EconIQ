@@ -265,63 +265,101 @@ export default function ChatInterface() {
         onSubmit={handleSubmit}
         className="sticky bottom-5 mt-10"
       >
-        <div className="rounded-2xl border border-white/10 bg-[#0b0b0b] p-2 shadow-2xl shadow-black/40 transition duration-300 focus-within:border-white/20 focus-within:shadow-white/[0.03]">
-          <div className="flex items-center">
-            <input
-              type="text"
-              value={question}
-              onChange={(event) => {
-                setQuestion(
-                  event.target.value,
-                );
-              }}
-              onKeyDown={(event) => {
-                if (
-                  event.key === "Enter" &&
-                  !event.shiftKey
-                ) {
-                  event.preventDefault();
-
-                  console.log(
-                    "[ECONIQ] ENTER PRESSED",
-                  );
-
+        <div className="econiq-input-glow">
+          <span className="econiq-moving-light" />
+          <div className="econiq-input-box">
+            <div className="flex items-center">
+              <input
+                type="text"
+                value={question}
+                onChange={(event) => setQuestion(event.target.value)}
+                onKeyDown={(event) => {
                   if (
-                    question.trim() &&
-                    !loading
+                    event.key === "Enter" &&
+                    !event.shiftKey
                   ) {
-                    submitQuestion(question);
-                  }
-                }
-              }}
-              disabled={loading}
-              placeholder="Ask ECONIQ anything..."
-              autoComplete="off"
-              className="h-12 flex-1 bg-transparent px-4 text-sm text-white outline-none placeholder:text-white/25 disabled:opacity-50"
-            />
+                    event.preventDefault();
 
-            <button
-              type="submit"
-              disabled={
-                loading ||
-                !question.trim()
-              }
-              onClick={() => {
-                console.log(
-                  "[ECONIQ] ASK BUTTON CLICKED",
-                );
-              }}
-              className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-white text-black transition duration-200 hover:scale-105 hover:bg-white/90 disabled:cursor-not-allowed disabled:opacity-30 disabled:hover:scale-100"
-              aria-label="Ask ECONIQ"
-            >
-              <ArrowUp size={18} />
-            </button>
+                    if (question.trim() && !loading) {
+                      submitQuestion(question);
+                    }
+                  }
+                }}
+                disabled={loading}
+                placeholder="Ask ECONIQ anything..."
+                autoComplete="off"
+                className="h-12 flex-1 bg-transparent px-4 text-sm text-white outline-none placeholder:text-white/25 disabled:opacity-50"
+              />
+
+              <button
+                type="submit"
+                disabled={loading || !question.trim()}
+                className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-white text-black transition duration-200 hover:scale-105 hover:bg-white/90 disabled:cursor-not-allowed disabled:opacity-30 disabled:hover:scale-100"
+                aria-label="Ask ECONIQ"
+              >
+                <ArrowUp size={18} />
+              </button>
+            </div>
           </div>
         </div>
 
         <p className="mt-3 text-center text-[10px] text-white/15">
           ECONIQ answers using retrieved economic evidence.
         </p>
+
+        <style jsx>{`
+  .econiq-input-glow {
+    position: relative;
+    border-radius: 17px;
+    padding: 1px;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.08);
+  }
+
+  .econiq-input-box {
+    position: relative;
+    z-index: 2;
+    border-radius: 16px;
+    background: #0b0b0b;
+    padding: 8px;
+  }
+
+  .econiq-moving-light {
+    position: absolute;
+    z-index: 3;
+    width: 70px;
+    height: 3px;
+    border-radius: 999px;
+    background: white;
+    box-shadow:
+      0 0 5px white,
+      0 0 12px rgba(255, 255, 255, 0.9),
+      0 0 25px rgba(255, 255, 255, 0.5);
+    offset-path: inset(0 round 17px);
+    offset-distance: 0%;
+    animation: econiq-border-run 3s linear infinite;
+    pointer-events: none;
+  }
+
+  @keyframes econiq-border-run {
+    from {
+      offset-distance: 0%;
+    }
+
+    to {
+      offset-distance: 100%;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .econiq-moving-light {
+      animation: none;
+      left: 50%;
+      top: 0;
+      transform: translateX(-50%);
+    }
+  }
+`}</style>
       </form>
     </div>
   );
@@ -375,3 +413,5 @@ function Sources({
     </div>
   );
 }
+
+

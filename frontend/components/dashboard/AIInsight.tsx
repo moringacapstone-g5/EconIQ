@@ -63,7 +63,7 @@ export default function AIInsight() {
       }}
       className="relative overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.025] p-6"
     >
-      <div className="pointer-events-none absolute -right-20 -top-20 h-48 w-48 rounded-full bg-white/[0.03] blur-3xl" />
+      <div className="pointer-events-none absolute -right-20 -top-20 h-48 w-48 rounded-full bg-blue-500/[0.05] blur-3xl" />
 
       <div className="relative">
         <div className="flex items-center gap-2">
@@ -84,13 +84,11 @@ export default function AIInsight() {
         <p className="mt-4 max-w-3xl text-sm leading-7 text-white/45">
           {forecast ? (
             <>
-              Kenya&apos;s latest model-ready inflation
-              reading is{" "}
+              Kenya&apos;s latest inflation reading is{" "}
               <span className="text-white">
                 {current?.toFixed(2)}%
               </span>
-              . The Random Forest forecasting model
-              estimates{" "}
+              . EconIQ currently projects{" "}
               <span className="text-white">
                 {predicted?.toFixed(2)}%
               </span>{" "}
@@ -102,17 +100,30 @@ export default function AIInsight() {
         </p>
 
         {forecast && (
-          <p className="mt-3 max-w-3xl text-sm leading-7 text-white/45">
-            The model points to a{" "}
-            <span className="text-white">
-              {Math.abs(change ?? 0).toFixed(1)}%
-            </span>{" "}
-            relative{" "}
-            {direction} movement compared with the
-            current model input. This is a model estimate,
-            not a guaranteed outcome.
-          </p>
+          <div className="mt-4 flex items-center gap-3">
+            <div className="flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-3 py-1.5">
+              <span
+                className={`h-1.5 w-1.5 rounded-full ${
+                  direction === "higher"
+                    ? "bg-amber-400"
+                    : direction === "lower"
+                      ? "bg-emerald-400"
+                      : "bg-white/40"
+                }`}
+              />
+
+              <span className="text-xs text-white/45">
+                {Math.abs(change ?? 0).toFixed(1)}% relative{" "}
+                {direction} movement
+              </span>
+            </div>
+          </div>
         )}
+
+        <p className="mt-4 text-xs leading-5 text-white/25">
+          Forecasts are estimates intended to support
+          economic analysis and decision-making.
+        </p>
 
         <a
           href="/forecasts"

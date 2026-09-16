@@ -14,8 +14,10 @@ import MetricCard from "./MetricCard";
 export default function EconomicPulse() {
   const [inflation, setInflation] = useState<LatestAnalytics | null>(null);
   const [gdp, setGdp] = useState<LatestAnalytics | null>(null);
-  const [exchangeRate, setExchangeRate] = useState<LatestAnalytics | null>(null);
-  const [interestRate, setInterestRate] = useState<LatestAnalytics | null>(null);
+  const [exchangeRate, setExchangeRate] =
+    useState<LatestAnalytics | null>(null);
+  const [interestRate, setInterestRate] =
+    useState<LatestAnalytics | null>(null);
   const [inflationForecast, setInflationForecast] =
     useState<InflationForecast | null>(null);
   const [foodForecast, setFoodForecast] =
@@ -87,32 +89,28 @@ export default function EconomicPulse() {
         <p className="text-sm font-medium text-red-300">
           Unable to load economic data
         </p>
-        <p className="mt-2 text-sm text-white/50">{error}</p>
+
+        <p className="mt-2 text-sm text-white/50">
+          {error}
+        </p>
       </section>
     );
   }
 
   return (
     <section className="space-y-4">
+      {/* Core economic indicators */}
       <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
         <MetricCard
           label="Inflation"
           value={inflation ? `${inflation.value.toFixed(2)}%` : "—"}
-          detail={
-            inflation
-              ? `Latest · ${inflation.date}`
-              : "No data available"
-          }
+          detail={inflation ? "Latest" : "No data available"}
         />
 
         <MetricCard
           label="GDP Growth"
           value={gdp ? `${gdp.value.toFixed(2)}%` : "—"}
-          detail={
-            gdp
-              ? `Latest · ${gdp.date}`
-              : "No data available"
-          }
+          detail={gdp ? "Latest" : "No data available"}
         />
 
         <MetricCard
@@ -124,7 +122,7 @@ export default function EconomicPulse() {
           }
           detail={
             exchangeRate
-              ? `KES / USD · ${exchangeRate.date}`
+              ? "KES / USD"
               : "No data available"
           }
         />
@@ -136,69 +134,72 @@ export default function EconomicPulse() {
               ? `${interestRate.value.toFixed(2)}%`
               : "—"
           }
-          detail={
-            interestRate
-              ? `Latest · ${interestRate.date}`
-              : "No data available"
-          }
+          detail={interestRate ? "Latest" : "No data available"}
         />
       </div>
 
+      {/* Forward-looking signals */}
       <div className="grid gap-4 md:grid-cols-2">
         {inflationForecast && (
-          <div className="rounded-2xl border border-white/[0.07] bg-white/[0.025] p-5">
-            <div className="flex items-start justify-between gap-4">
-              <div>
-                <p className="text-[10px] font-medium uppercase tracking-[0.18em] text-white/30">
-                  Inflation Forecast
-                </p>
-                <p className="mt-3 text-3xl font-medium tracking-[-0.04em]">
-                  {inflationForecast.forecast_inflation.toFixed(2)}%
-                </p>
+          <div className="group relative overflow-hidden rounded-2xl border border-white/[0.07] bg-white/[0.025] p-5 transition duration-300 hover:border-white/[0.14] hover:bg-white/[0.035]">
+            <div className="pointer-events-none absolute -right-16 -top-16 h-40 w-40 rounded-full bg-blue-500/[0.06] blur-3xl transition duration-500 group-hover:bg-blue-500/[0.1]" />
+
+            <div className="relative">
+              <div className="flex items-start justify-between gap-4">
+                <div>
+                  <p className="text-[10px] font-medium uppercase tracking-[0.18em] text-white/30">
+                    Inflation Forecast
+                  </p>
+
+                  <p className="mt-3 text-3xl font-medium tracking-[-0.04em]">
+                    {inflationForecast.forecast_inflation.toFixed(2)}%
+                  </p>
+                </div>
+
+                <span className="rounded-full border border-white/10 bg-white/[0.03] px-2.5 py-1 text-[10px] text-white/35">
+                  Next month
+                </span>
               </div>
 
-              <span className="rounded-full border border-white/10 px-2.5 py-1 text-[10px] text-white/35">
-                {inflationForecast.model}
-              </span>
+              <div className="mt-4 flex items-center gap-2">
+                <span className="h-1.5 w-1.5 rounded-full bg-blue-400" />
+                <p className="text-xs text-white/30">
+                  Forward-looking signal
+                </p>
+              </div>
             </div>
-
-            <p className="mt-3 text-sm text-white/45">
-              {inflationForecast.forecast_period}
-            </p>
-
-            <p className="mt-1 text-xs text-white/25">
-              Model data through {inflationForecast.latest_data_date}
-            </p>
           </div>
         )}
 
         {foodForecast && (
-          <div className="rounded-2xl border border-white/[0.07] bg-white/[0.025] p-5">
-            <div className="flex items-start justify-between gap-4">
-              <div>
-                <p className="text-[10px] font-medium uppercase tracking-[0.18em] text-white/30">
-                  Beans Forecast
-                </p>
+          <div className="group relative overflow-hidden rounded-2xl border border-white/[0.07] bg-white/[0.025] p-5 transition duration-300 hover:border-white/[0.14] hover:bg-white/[0.035]">
+            <div className="pointer-events-none absolute -right-16 -top-16 h-40 w-40 rounded-full bg-blue-500/[0.06] blur-3xl transition duration-500 group-hover:bg-blue-500/[0.1]" />
 
-                <p className="mt-3 text-3xl font-medium tracking-[-0.04em]">
-                  KES {foodForecast.forecast_price.toFixed(2)}
-                </p>
+            <div className="relative">
+              <div className="flex items-start justify-between gap-4">
+                <div>
+                  <p className="text-[10px] font-medium uppercase tracking-[0.18em] text-white/30">
+                    Beans Forecast
+                  </p>
+
+                  <p className="mt-3 text-3xl font-medium tracking-[-0.04em]">
+                    KES {foodForecast.forecast_price.toFixed(2)}
+                  </p>
+                </div>
+
+                <span className="rounded-full border border-white/10 bg-white/[0.03] px-2.5 py-1 text-[10px] text-white/40">
+                  {foodForecast.percentage_change >= 0 ? "+" : ""}
+                  {foodForecast.percentage_change.toFixed(2)}%
+                </span>
               </div>
 
-              <span className="rounded-full border border-white/10 px-2.5 py-1 text-[10px] text-white/35">
-                {foodForecast.percentage_change >= 0 ? "+" : ""}
-                {foodForecast.percentage_change.toFixed(2)}%
-              </span>
+              <div className="mt-4 flex items-center gap-2">
+                <span className="h-1.5 w-1.5 rounded-full bg-blue-400" />
+                <p className="text-xs text-white/30">
+                  {foodForecast.commodity} · Forecast
+                </p>
+              </div>
             </div>
-
-            <p className="mt-3 text-sm text-white/45">
-              {foodForecast.commodity} · Forecast for{" "}
-              {foodForecast.forecast_date ?? "next period"}
-            </p>
-
-            <p className="mt-1 text-xs text-white/25">
-              Model data through {foodForecast.latest_model_data_date}
-            </p>
           </div>
         )}
       </div>

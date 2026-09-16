@@ -1,232 +1,220 @@
 ﻿"use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { ArrowUpRight, Sparkles, TrendingDown, TrendingUp } from "lucide-react";
+
 import {
-  getAvailableFoodCommodities,
-  predictFoodPrice,
-  type FoodCommodity,
+  getFoodPriceForecast,
   type FoodPriceForecast,
 } from "@/lib/api";
 
+const commodities = [
+  "Beans (dry)",
+  "Maize",
+  "Maize flour",
+  "Maize (white)",
+  "Meat (beef)",
+  "Meat (camel)",
+  "Meat (goat)",
+  "Potatoes (Irish)",
+  "Rice",
+  "Sorghum",
+  "Sugar",
+  "Wheat flour",
+];
+
+function formatNumber(value: number, decimals = 2) {
+  return new Intl.NumberFormat("en-KE", {
+    minimumFractionDigits: decimals,
+    maximumFractionDigits: decimals,
+  }).format(value);
+}
+
+function getPercentageChange(current: number, predicted: number) {
+  if (!current) return 0;
+  return ((predicted - current) / current) * 100;
+}
+
 export default function FoodPricePrediction() {
-  const [commodities, setCommodities] = useState<FoodCommodity[]>([]);
-  const [commodity, setCommodity] = useState("");
+  const [commodity, setCommodity] = useState("Beans (dry)");
   const [prediction, setPrediction] =
     useState<FoodPriceForecast | null>(null);
-  const [loadingCommodities, setLoadingCommodities] = useState(true);
+
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
-  useEffect(() => {
-    async function loadCommodities() {
-      try {
-        setLoadingCommodities(true);
-        setError("");
-
-        const result = await getAvailableFoodCommodities();
-
-        setCommodities(result);
-
-        if (result.length > 0) {
-          setCommodity(result[0].commodity);
-        }
-      } catch (err) {
-        setError(
-          err instanceof Error
-            ? err.message
-            : "Unable to load available commodities.",
-        );
-      } finally {
-        setLoadingCommodities(false);
-      }
-    }
-
-    loadCommodities();
-  }, []);
-
-  async function handlePredict() {
-    if (!commodity) return;
-
+  async function predictPrice() {
     setLoading(true);
     setError("");
-    setPrediction(null);
 
     try {
-      const result = await predictFoodPrice(commodity);
+      const result = await getFoodPriceForecast(commodity);
       setPrediction(result);
     } catch (err) {
-      setError(
-        err instanceof Error
-          ? err.message
-          : "Unable to generate prediction.",
-      );
+      console.error(err);
+      setError("Unable to generate the food-price prediction.");
+      setPrediction(null);
     } finally {
       setLoading(false);
     }
   }
 
-  const isIncrease =
-    prediction !== null && prediction.price_change >= 0;
+  const percentageChange = prediction
+    ? getPercentageChange(
+        prediction.current_price,
+        prediction.forecast_price
+      )
+    : 0;
+
+  const priceChange = prediction
+    ? prediction.forecast_price - prediction.current_price
+    : 0;
+
+  const decreasing = percentageChange < 0;
 
   return (
-    <section className="rounded-2xl border border-white/[0.08] bg-white/[0.025] p-6">
-      <div className="mb-6">
-        <h2 className="text-xl font-semibold text-white">
-          Food Price Prediction
-        </h2>
+    <div className="relative overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.035] p-7">
+      <div className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-blue-500/[0.06] blur-3xl" />
 
-        <p className="mt-2 text-sm text-white/50">
-          One-month-ahead food price prediction using the trained
-          Random Forest model.
-        </p>
-      </div>
+      <div className="relative">
+        {/* Header */}
+        <div className="flex flex-col justify-between gap-5 md:flex-row md:items-start">
+          <div>
+            <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-3 py-1.5 text-xs text-white/45">
+              <Sparkles size={13} />
+              Food price prediction
+            </div>
 
-      <div className="flex flex-col gap-4 sm:flex-row sm:items-end">
-        <div className="flex-1">
-          <label
-            htmlFor="food-commodity"
-            className="mb-2 block text-sm text-white/60"
-          >
-            Commodity
-          </label>
+            <h2 className="mt-4 text-2xl font-medium tracking-[-0.035em]">
+              One-month-ahead food price prediction
+            </h2>
 
+            <p className="mt-2 max-w-2xl text-sm leading-6 text-white/35">
+              Select a commodity to estimate its expected price for the
+              following month.
+            </p>
+          </div>
+        </div>
+
+        {/* Controls */}
+        <div className="mt-7 flex flex-col gap-3 sm:flex-row">
           <select
-            id="food-commodity"
             value={commodity}
-            onChange={(event) => setCommodity(event.target.value)}
-            disabled={loadingCommodities || commodities.length === 0}
-            className="w-full rounded-xl border border-white/[0.08] bg-black/30 px-4 py-3 text-sm text-white outline-none transition focus:border-white/20 disabled:cursor-not-allowed disabled:opacity-50"
+            onChange={(e) => setCommodity(e.target.value)}
+            className="h-11 flex-1 rounded-xl border border-white/10 bg-[#090c10] px-4 text-sm text-white/70 outline-none transition focus:border-blue-400/30"
           >
-            {loadingCommodities ? (
-              <option value="">Loading commodities...</option>
-            ) : (
-              commodities.map((item) => (
-                <option
-                  key={item.commodity}
-                  value={item.commodity}
-                >
-                  {item.commodity}
-                </option>
-              ))
-            )}
+            {commodities.map((item) => (
+              <option key={item} value={item}>
+                {item}
+              </option>
+            ))}
           </select>
+
+          <button
+            onClick={predictPrice}
+            disabled={loading}
+            className="inline-flex h-11 items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/[0.06] px-5 text-sm text-white/70 transition hover:bg-white/[0.1] hover:text-white disabled:cursor-not-allowed disabled:opacity-40"
+          >
+            {loading ? "Predicting..." : "Predict price"}
+            <ArrowUpRight size={15} />
+          </button>
         </div>
 
-        <button
-          type="button"
-          onClick={handlePredict}
-          disabled={
-            loading ||
-            loadingCommodities ||
-            !commodity
-          }
-          className="rounded-xl border border-white/10 bg-white px-5 py-3 text-sm font-medium text-black transition hover:bg-white/90 disabled:cursor-not-allowed disabled:opacity-50"
-        >
-          {loading ? "Predicting..." : "Predict price"}
-        </button>
+        {/* Error */}
+        {error && (
+          <div className="mt-5 rounded-xl border border-red-400/10 bg-red-400/[0.04] px-4 py-3 text-sm text-red-300/70">
+            {error}
+          </div>
+        )}
+
+        {/* Prediction */}
+        {prediction && (
+          <div className="mt-7">
+            <div className="grid gap-4 md:grid-cols-2">
+              {/* Current price */}
+              <div className="rounded-2xl border border-white/[0.07] bg-white/[0.025] p-6">
+                <p className="text-[10px] font-medium uppercase tracking-[0.18em] text-white/30">
+                  Current price
+                </p>
+
+                <p className="mt-3 text-3xl font-medium tracking-[-0.04em]">
+                  {formatNumber(prediction.current_price)}
+                  <span className="ml-2 text-sm text-white/30">
+                    KES
+                  </span>
+                </p>
+              </div>
+
+              {/* Predicted price */}
+              <div className="rounded-2xl border border-blue-400/[0.12] bg-blue-400/[0.035] p-6">
+                <p className="text-[10px] font-medium uppercase tracking-[0.18em] text-blue-200/40">
+                  Predicted price — next month
+                </p>
+
+                <p className="mt-3 text-3xl font-medium tracking-[-0.04em]">
+                  {formatNumber(prediction.forecast_price)}
+                  <span className="ml-2 text-sm text-white/30">
+                    KES
+                  </span>
+                </p>
+              </div>
+            </div>
+
+            {/* Change */}
+            <div className="mt-4 grid gap-4 sm:grid-cols-2">
+              <div className="rounded-2xl border border-white/[0.07] bg-white/[0.025] p-5">
+                <div className="flex items-center gap-2">
+                  {decreasing ? (
+                    <TrendingDown size={17} className="text-emerald-300/70" />
+                  ) : (
+                    <TrendingUp size={17} className="text-amber-300/70" />
+                  )}
+
+                  <p className="text-xs text-white/35">
+                    Expected change
+                  </p>
+                </div>
+
+                <p
+                  className={`mt-3 text-2xl font-medium ${
+                    decreasing
+                      ? "text-emerald-300"
+                      : "text-amber-300"
+                  }`}
+                >
+                  {priceChange >= 0 ? "+" : ""}
+                  {formatNumber(priceChange)} KES
+                </p>
+              </div>
+
+              <div className="rounded-2xl border border-white/[0.07] bg-white/[0.025] p-5">
+                <p className="text-xs text-white/35">
+                  Percentage change
+                </p>
+
+                <p
+                  className={`mt-3 text-2xl font-medium ${
+                    decreasing
+                      ? "text-emerald-300"
+                      : "text-amber-300"
+                  }`}
+                >
+                  {percentageChange >= 0 ? "+" : ""}
+                  {formatNumber(percentageChange)}%
+                </p>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {!prediction && !loading && (
+          <div className="mt-7 rounded-2xl border border-dashed border-white/[0.08] bg-white/[0.015] p-8 text-center">
+            <p className="text-sm text-white/30">
+              Select a commodity and generate a prediction.
+            </p>
+          </div>
+        )}
       </div>
-
-      {error && (
-        <div className="mt-5 rounded-xl border border-red-400/20 bg-red-400/5 px-4 py-3 text-sm text-red-300">
-          {error}
-        </div>
-      )}
-
-      {prediction && (
-        <div className="mt-8">
-          <div className="grid gap-3 md:grid-cols-4">
-            <div className="rounded-xl border border-white/[0.06] bg-white/[0.02] p-4">
-              <p className="text-xs uppercase tracking-wide text-white/40">
-                Current price
-              </p>
-              <p className="mt-2 text-2xl font-semibold text-white">
-                {prediction.current_price.toFixed(2)}{" "}
-                {prediction.unit}
-              </p>
-            </div>
-
-            <div className="rounded-xl border border-white/[0.06] bg-white/[0.02] p-4">
-              <p className="text-xs uppercase tracking-wide text-white/40">
-                Predicted price
-              </p>
-              <p className="mt-2 text-2xl font-semibold text-white">
-                {prediction.forecast_price.toFixed(2)}{" "}
-                {prediction.unit}
-              </p>
-            </div>
-
-            <div className="rounded-xl border border-white/[0.06] bg-white/[0.02] p-4">
-              <p className="text-xs uppercase tracking-wide text-white/40">
-                Expected change
-              </p>
-              <p
-                className={`mt-2 text-2xl font-semibold ${
-                  isIncrease ? "text-white" : "text-white/70"
-                }`}
-              >
-                {isIncrease ? "+" : ""}
-                {prediction.price_change.toFixed(2)}
-              </p>
-            </div>
-
-            <div className="rounded-xl border border-white/[0.06] bg-white/[0.02] p-4">
-              <p className="text-xs uppercase tracking-wide text-white/40">
-                Percentage change
-              </p>
-              <p className="mt-2 text-2xl font-semibold text-white">
-                {isIncrease ? "+" : ""}
-                {prediction.percentage_change.toFixed(2)}%
-              </p>
-            </div>
-          </div>
-
-          <div className="mt-5 grid gap-3 md:grid-cols-2 lg:grid-cols-4">
-            <div>
-              <p className="text-xs text-white/40">Forecast date</p>
-              <p className="mt-1 text-sm text-white/80">
-                {prediction.forecast_date ?? "N/A"}
-              </p>
-            </div>
-
-            <div>
-              <p className="text-xs text-white/40">
-                Model data through
-              </p>
-              <p className="mt-1 text-sm text-white/80">
-                {prediction.latest_model_data_date}
-              </p>
-            </div>
-
-            <div>
-              <p className="text-xs text-white/40">Model</p>
-              <p className="mt-1 text-sm text-white/80">
-                {prediction.model}
-              </p>
-            </div>
-
-            <div>
-              <p className="text-xs text-white/40">
-                Weather data through
-              </p>
-              <p className="mt-1 text-sm text-white/80">
-                {prediction.weather_data_available_through}
-              </p>
-            </div>
-          </div>
-
-          <div className="mt-6 rounded-xl border border-white/[0.06] bg-white/[0.02] p-4">
-            <p className="text-xs uppercase tracking-wide text-white/40">
-              Forecast note
-            </p>
-
-            <p className="mt-2 text-sm leading-6 text-white/60">
-              EconIQ&apos;s food-price model generates a one-month-ahead
-              forecast from the latest complete modeling data available
-              for the selected commodity.
-            </p>
-          </div>
-        </div>
-      )}
-    </section>
+    </div>
   );
 }
